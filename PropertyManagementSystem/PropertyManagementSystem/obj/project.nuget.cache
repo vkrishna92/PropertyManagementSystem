@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zrjA1i/wGzRzYU5KxOPonxwEyJiKMUKNc3sFN1Py4JD6jx9NcckHIQrPkLyFK4G4prL0x/UarFvdILXKalaEbw==",
+  "dgSpecHash": "v4eSWOgZgB7ckInHZ0m5wosffbQ8COekdetmH/eZBxyQY69NVmEs+PkNhwFP3foFLP1VfvE+DJgWa6z1VnMCdw==",
   "success": true,
   "projectFilePath": "C:\\Users\\vkris\\Documents\\PropertyManagementSystem\\PropertyManagementSystem\\PropertyManagementSystem\\PropertyManagementSystem.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.27\\microsoft.aspnetcore.authentication.jwtbearer.3.1.27.nupkg.sha512",
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.27\\microsoft.aspnetcore.cryptography.internal.3.1.27.nupkg.sha512",
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.27\\microsoft.aspnetcore.cryptography.keyderivation.3.1.27.nupkg.sha512",
     "C:\\Users\\vkris\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",

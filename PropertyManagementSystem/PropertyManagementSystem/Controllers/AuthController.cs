@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManagementSystem.DTOs;
+using PropertyManagementSystem.Interfaces;
 using PropertyManagementSystem.Models;
 using System;
 using System.Threading.Tasks;
@@ -15,10 +16,12 @@ namespace PropertyManagementSystem.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AuthController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly IAuthRepository _authRepository;
+        public AuthController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,IAuthRepository authRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _authRepository = authRepository;
         }
 
         [AllowAnonymous]
@@ -49,6 +52,16 @@ namespace PropertyManagementSystem.Controllers
             {
                 return BadRequest();
             }            
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> login(LoginDto loginDto)
+        {
+            string token = await _authRepository.login(loginDto);
+            if (token == String.Empty || token.Length == 0)
+                return Unauthorized();
+            else
+                return Ok(token);
         }
         [HttpPost("addRole")]        
         public async Task<IActionResult> addRole(IdentityRole role)
