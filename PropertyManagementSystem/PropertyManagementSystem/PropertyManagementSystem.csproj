@@ -4,5 +4,41 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20220803235307_AppUserTblInit.cs" />
+    <Compile Remove="Migrations\20220803235307_AppUserTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220803235358_AppUserTblInit.cs" />
+    <Compile Remove="Migrations\20220803235358_AppUserTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220803235429_AppUserTblInit.cs" />
+    <Compile Remove="Migrations\20220803235429_AppUserTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220803235536_AppUserTblInit.cs" />
+    <Compile Remove="Migrations\20220803235536_AppUserTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220803235756_AppUserTblInit.cs" />
+    <Compile Remove="Migrations\20220803235756_AppUserTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220804000114_appUser.cs" />
+    <Compile Remove="Migrations\20220804000114_appUser.Designer.cs" />
+    <Compile Remove="Migrations\20220804001112_ApartmentUnitTblInit.cs" />
+    <Compile Remove="Migrations\20220804001112_ApartmentUnitTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220804001141_ApartmentUnitTblInit.cs" />
+    <Compile Remove="Migrations\20220804001141_ApartmentUnitTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220804001926_ApartmentUnitResidentMapInit.cs" />
+    <Compile Remove="Migrations\20220804001926_ApartmentUnitResidentMapInit.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.22.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.0" />
+  </ItemGroup>
+
 
 </Project>
