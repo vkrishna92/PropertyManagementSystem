@@ -61,7 +61,7 @@ namespace PropertyManagementSystem.Controllers
             if (token == String.Empty || token.Length == 0)
                 return Unauthorized();
             else
-                return Ok(token);
+                return Ok(new Tokens() { Token = token });
         }
         [HttpPost("addRole")]        
         public async Task<IActionResult> addRole(IdentityRole role)

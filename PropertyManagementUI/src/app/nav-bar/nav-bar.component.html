@@ -1,0 +1,16 @@
+<mat-toolbar *ngIf="Visible" class="shadow-sm">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <i class="pi pi-bars"></i>
+    </button>
+    <h1 class="m-1 font-weight-light">Resident Portal</h1>
+    <span class="spacer"></span>
+    <button mat-icon-button class="mr-3">
+        <i class="pi pi-bell"></i>
+    </button>    
+    
+    <button mat-button class="font-weight-light" aria-label="Example icon-button with share icon"  (click)="menu.toggle($event)">
+        <i class="pi pi-user mr-3"></i>
+        {{DisplayName}}
+    </button> 
+    <p-menu #menu [popup]="true" [model]="items"></p-menu>   
+</mat-toolbar>

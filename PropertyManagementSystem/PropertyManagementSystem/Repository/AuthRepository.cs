@@ -38,7 +38,9 @@ namespace PropertyManagementSystem.Repository
                 var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Upn, user.UserName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Name, string.Format("{0}, {1}",user.FirstName, user.LastName))
                 };
                 foreach (var r in roles)
                 {

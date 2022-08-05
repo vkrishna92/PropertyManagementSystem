@@ -6,37 +6,28 @@ import { map } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
+import { Tokens } from '../Models/Tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  baseUrl = environment.baseUrl;
+  baseUrl = environment.baseUrl+"Auth/";
   jwtHelper = new JwtHelperService();
-  decodedToken:any;
+  decodedToken:string;
   constructor(private http: HttpClient,
               private router:Router) { }
 
-  login(userlogin:any){
-    console.log(userlogin);
-    return this.http.post(this.baseUrl+"login",userlogin).pipe(
-      map((response:any)=>{
-        const user = response;
-        //AppConstants.userProfile=user;
-        if(user){
-          localStorage.setItem("token",user.token);
-          this.decodedToken = this.jwtHelper.decodeToken(user.token);
-        }
-      })
-  )}
+  login(userlogin:Login){    
+    return this.http.post<Tokens>(this.baseUrl+"login",userlogin); 
+  }
   logout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-    //this.alert.success("Logout","successful")
+    localStorage.removeItem('access_token');
+    this.router.navigate(['/login']);    
   }
   IsLoginValid(){
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
     if(token != null){
       return this.jwtHelper.isTokenExpired(token);
     }
