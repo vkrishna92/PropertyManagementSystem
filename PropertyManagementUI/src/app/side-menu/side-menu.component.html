@@ -1,0 +1,10 @@
+<div class="details m-3">
+    <p class="fs-6">Vamsi Gattupalli</p>
+    <span class="d-block text-secondary ">Building 8</span>
+    <span class="d-block text-secondary">APT 272</span>    
+</div>
+<mat-divider></mat-divider>
+<mat-nav-list class="sidemenu mt-3" (click)="toggleSideNav()">
+    <a mat-list-item class="m-1" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
+    <a mat-list-item [routerLink]="['/sysadmin']" routerLinkActive="router-link-active" >System Administration</a>
+</mat-nav-list>

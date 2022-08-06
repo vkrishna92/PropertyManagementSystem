@@ -27,6 +27,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 
 //COMPONENTS
 import { LoginComponent } from './login/login.component';
@@ -36,6 +39,8 @@ import { HomeComponent } from './home/home.component';
 import { MessageService } from 'primeng/api';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MyProfleComponent } from './my-profle/my-profle.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { SystemAdminModule } from './system-admin/system-admin.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,8 @@ import { MyProfleComponent } from './my-profle/my-profle.component';
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    MyProfleComponent
+    MyProfleComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +79,12 @@ import { MyProfleComponent } from './my-profle/my-profle.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule,
+    
+    //CUSTOM MODULES
+    SystemAdminModule,
 
     NgbModule    
   ],

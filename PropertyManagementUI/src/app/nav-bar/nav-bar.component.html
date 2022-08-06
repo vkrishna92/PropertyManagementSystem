@@ -1,16 +1,20 @@
-<mat-toolbar *ngIf="Visible" class="shadow-sm">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <i class="pi pi-bars"></i>
+<mat-toolbar *ngIf="Visible" class="sticky-top shadow-sm">
+    <button mat-icon-button class="example-icon" (click)="toggleSideNav()" aria-label="Example icon-button with menu icon">
+        <span class="material-symbols-outlined" *ngIf="!sidenav.opened">menu</span>
+        <span class="material-symbols-outlined" *ngIf="sidenav.opened">close</span>
     </button>
-    <h1 class="m-1 font-weight-light">Resident Portal</h1>
+    <h1 class="m-1">Resident Portal</h1>
     <span class="spacer"></span>
     <button mat-icon-button class="mr-3">
-        <i class="pi pi-bell"></i>
+        <span class="material-symbols-outlined">notifications</span>
     </button>    
     
-    <button mat-button class="font-weight-light" aria-label="Example icon-button with share icon"  (click)="menu.toggle($event)">
-        <i class="pi pi-user mr-3"></i>
+    <button mat-button aria-label="Example icon-button with share icon"  [matMenuTriggerFor]="menu">
+        <span class="material-symbols-outlined mr-3">account_circle</span>
         {{DisplayName}}
     </button> 
-    <p-menu #menu [popup]="true" [model]="items"></p-menu>   
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Logout</button>
+    </mat-menu>
 </mat-toolbar>

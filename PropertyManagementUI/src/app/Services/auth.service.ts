@@ -28,6 +28,7 @@ export class AuthService {
   }
   IsLoginValid(){
     const token = localStorage.getItem('access_token');
+    console
     if(token != null){
       return this.jwtHelper.isTokenExpired(token);
     }
