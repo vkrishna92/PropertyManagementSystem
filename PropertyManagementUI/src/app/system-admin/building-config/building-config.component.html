@@ -1,0 +1,74 @@
+<div class="mt-2">
+    <p-menubar [model]="items" class="mt-2"></p-menubar>  
+    <div class="row mt-2 mb-2">
+        <div class="col-3">
+            <p-listbox [listStyle]="{'max-height':'460px','height':'460px'}" class="h-100" [options]="cities" [filter]="true"></p-listbox>
+        </div>
+        <div class="col-9">
+            <mat-card #building>
+                <mat-card-title>Building No.8</mat-card-title>
+                <mat-card-content>
+                    <form >  
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Building Name</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col"></div> 
+                        </div>  
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Address Line 1</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Address Line 2</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>State</mat-label>
+                                            <input matInput />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>City</mat-label>
+                                            <input matInput />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col"></div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Country</mat-label>
+                                            <input matInput />
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col">
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Zipcode</mat-label>
+                                            <input matInput />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                        </div>                    
+                                                                                               
+                    </form>                    
+                </mat-card-content>                
+            </mat-card>           
+        </div>
+    </div>               
+</div>

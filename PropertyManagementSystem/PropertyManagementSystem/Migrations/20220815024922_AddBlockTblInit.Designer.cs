@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyManagementSystem.DataAccess;
 
 namespace PropertyManagementSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220815024922_AddBlockTblInit")]
+    partial class AddBlockTblInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,27 +223,16 @@ namespace PropertyManagementSystem.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.Apartment", b =>
+            modelBuilder.Entity("PropertyManagementSystem.Models.ApartmentUnit", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApartmentNum")
+                    b.Property<string>("BuildingNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<float>("AreaSqft")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Block")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<long>("CommunityId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -249,10 +240,9 @@ namespace PropertyManagementSystem.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Floor")
+                    b.Property<string>("FloorNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -260,11 +250,18 @@ namespace PropertyManagementSystem.Migrations
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UnitNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CommunityId");
+                    b.HasIndex("OwnerId");
 
-                    b.ToTable("Apartments");
+                    b.ToTable("ApartmentUnits");
                 });
 
             modelBuilder.Entity("PropertyManagementSystem.Models.Block", b =>
@@ -357,292 +354,6 @@ namespace PropertyManagementSystem.Migrations
                     b.ToTable("Communities");
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenancePaymHistory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AmountPaid")
-                        .HasColumnType("real");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MaintenanceScheduleId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("MaintenanceScheduleId1")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("TransDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaintenanceScheduleId1");
-
-                    b.ToTable("MaintenancePaymHistories");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenanceSchedule", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ApartmentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("MaintenanceAmount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PeriodEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PeriodStartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("MaintenanceSchedules");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.Owner", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ApartmentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Owners");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentAgreement", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ApartmentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("FromDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("MaintenanceAmount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("RentAmount")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("ToDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("RentAgreements");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentPaymHistory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AmountPaid")
-                        .HasColumnType("real");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("RentScheduleId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("TransDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RentScheduleId");
-
-                    b.ToTable("RentPaymHistorys");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentSchedule", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ApartmentId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("ApartmentId1")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<float>("MaintenanceAmount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PeriodEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PeriodStartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("RentAmount")
-                        .HasColumnType("real");
-
-                    b.Property<float>("TotalAmount")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId1");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("RentSchedules");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.Tenant", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("ApartmentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Tenants");
-                });
-
             modelBuilder.Entity("PropertyManagementSystem.Models.AppUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -710,13 +421,11 @@ namespace PropertyManagementSystem.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.Apartment", b =>
+            modelBuilder.Entity("PropertyManagementSystem.Models.ApartmentUnit", b =>
                 {
-                    b.HasOne("PropertyManagementSystem.Models.Community", "Community")
+                    b.HasOne("PropertyManagementSystem.Models.AppUser", "Owner")
                         .WithMany()
-                        .HasForeignKey("CommunityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("PropertyManagementSystem.Models.Block", b =>
@@ -726,85 +435,6 @@ namespace PropertyManagementSystem.Migrations
                         .HasForeignKey("CommunityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenancePaymHistory", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.MaintenanceSchedule", "MaintenanceSchedule")
-                        .WithMany()
-                        .HasForeignKey("MaintenanceScheduleId1");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenanceSchedule", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.Owner", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentAgreement", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentPaymHistory", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.RentSchedule", "RentSchedule")
-                        .WithMany()
-                        .HasForeignKey("RentScheduleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.RentSchedule", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId1");
-
-                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.Tenant", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MegaMenuItem,MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-community-setup',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommunitySetupComponent implements OnInit {
 
+  items: MenuItem[];
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.items = [
+      {
+        label: 'New', icon: 'pi pi-fw pi-plus',        
+      },
+      {
+        label: 'Save', icon: 'pi pi-fw pi-save',        
+      },
+      {
+        label: 'Edit', icon: 'pi pi-fw pi-pencil',        
+      },
+      {
+        label: 'Delte', icon: 'pi pi-fw pi-trash',          
+      }  
+    ]
   }
 
 }

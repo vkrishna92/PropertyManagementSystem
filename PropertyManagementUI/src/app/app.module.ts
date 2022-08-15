@@ -17,6 +17,7 @@ import {PasswordModule} from 'primeng/password';
 import {SidebarModule} from 'primeng/sidebar';
 import {MenuModule} from 'primeng/menu';
 import {MenuItem} from 'primeng/api';
+import {MegaMenuModule} from 'primeng/megamenu';
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -69,6 +70,7 @@ import { SystemAdminModule } from './system-admin/system-admin.module';
     CheckboxModule,
     SidebarModule,
     MenuModule,
+    MegaMenuModule,
     
     //MATERIAL
     MatCardModule,

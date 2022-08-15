@@ -1,0 +1,53 @@
+<div class="mt-2">
+    <p-menubar [model]="items" class="mt-2"></p-menubar>  
+    <div class="row mt-2 mb-2">
+        <div class="col-3">
+            <p-listbox [listStyle]="{'max-height':'385px','height':'460px'}" class="h-100" [options]="units" [filter]="true"></p-listbox>
+        </div>
+        <div class="col-9 unit-config" fxLayoutAlign="start start">
+            <mat-card #building>
+                <mat-card-title>Flat No. 1001</mat-card-title>
+                <mat-card-content>
+                    <form >  
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Flat Number</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Floor Number</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Building</mat-label>
+                                    <input matInput />
+                                </mat-form-field>
+                            </div>
+                            <div class="col"></div> 
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Owner</mat-label>
+                                    <span class="material-symbols-outlined" matSuffix>person</span>
+                                    <input matInput/>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Tenant</mat-label>
+                                    <span class="material-symbols-outlined" matSuffix>real_estate_agent</span>
+                                    <input matInput/>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+
+                            </div>                            
+                        </div>                                                                                      
+                    </form>                    
+                </mat-card-content>                
+            </mat-card>           
+        </div>
+    </div>               
+</div>

@@ -15,8 +15,17 @@ namespace PropertyManagementSystem.DataAccess
             base.OnModelCreating(builder);
         }
 
-        public DbSet<AppUser> AppUsers { get; set; }
-        public DbSet<ApartmentUnit> ApartmentUnits { get; set; }
-        public DbSet<ApartmentUnitResidentMap> ApartmentUnitResidentMaps { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }        
+        public DbSet<Community> Communities { get; set; }
+        public DbSet<Block> Blocks { get; set; }
+        public DbSet<Apartment> Apartments { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<RentAgreement> RentAgreements { get; set; }
+        public DbSet<RentSchedule> RentSchedules { get; set; }
+
+        public DbSet<MaintenanceSchedule> MaintenanceSchedules { get; set; }
+        public DbSet<RentPaymHistory> RentPaymHistorys { get; set; }
+        public DbSet<MaintenancePaymHistory> MaintenancePaymHistories { get; set; }
     }
 }

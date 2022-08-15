@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PropertyManagementSystem.Contants;
 using PropertyManagementSystem.Interfaces;
 using PropertyManagementSystem.Models;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace PropertyManagementSystem.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> Get()
-        {
+        {            
             ApartmentUnit apartmentUnit = new ApartmentUnit()
             {
                 BuildingNumber = "A",

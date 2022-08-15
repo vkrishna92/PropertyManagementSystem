@@ -1,0 +1,9 @@
+.building-list{
+    max-height: 300px;
+}
+.scrolls {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 80px;
+    white-space:nowrap;
+}

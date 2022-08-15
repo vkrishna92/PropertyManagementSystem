@@ -23,6 +23,10 @@
     <Compile Remove="Migrations\20220804001141_ApartmentUnitTblInit.Designer.cs" />
     <Compile Remove="Migrations\20220804001926_ApartmentUnitResidentMapInit.cs" />
     <Compile Remove="Migrations\20220804001926_ApartmentUnitResidentMapInit.Designer.cs" />
+    <Compile Remove="Migrations\20220815024117_AddCommunityTblInit.cs" />
+    <Compile Remove="Migrations\20220815024117_AddCommunityTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220815030729_TenantTblInit.cs" />
+    <Compile Remove="Migrations\20220815030729_TenantTblInit.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

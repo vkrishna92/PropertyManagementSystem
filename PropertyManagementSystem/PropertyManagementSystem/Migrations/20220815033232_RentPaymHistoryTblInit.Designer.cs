@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyManagementSystem.DataAccess;
 
 namespace PropertyManagementSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220815033232_RentPaymHistoryTblInit")]
+    partial class RentPaymHistoryTblInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,44 +359,6 @@ namespace PropertyManagementSystem.Migrations
                     b.ToTable("Communities");
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenancePaymHistory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AmountPaid")
-                        .HasColumnType("real");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MaintenanceScheduleId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("MaintenanceScheduleId1")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("TransDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MaintenanceScheduleId1");
-
-                    b.ToTable("MaintenancePaymHistories");
-                });
-
             modelBuilder.Entity("PropertyManagementSystem.Models.MaintenanceSchedule", b =>
                 {
                     b.Property<long>("Id")
@@ -726,13 +690,6 @@ namespace PropertyManagementSystem.Migrations
                         .HasForeignKey("CommunityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("PropertyManagementSystem.Models.MaintenancePaymHistory", b =>
-                {
-                    b.HasOne("PropertyManagementSystem.Models.MaintenanceSchedule", "MaintenanceSchedule")
-                        .WithMany()
-                        .HasForeignKey("MaintenanceScheduleId1");
                 });
 
             modelBuilder.Entity("PropertyManagementSystem.Models.MaintenanceSchedule", b =>
