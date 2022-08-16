@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthDataService } from '../Services/auth-data.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  display_name='';
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.display_name = this.authService.getAttributeValue('unique_name');
+    console.log(this.display_name);
   }
 
 }

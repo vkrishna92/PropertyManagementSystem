@@ -5,7 +5,9 @@
     width: 50%;
     align-items: center;
 }
-
+.sign-up{
+    cursor: pointer;
+}
 @media screen and (max-width: 960px) {
     button {
         width: 100%;

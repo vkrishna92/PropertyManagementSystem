@@ -1,8 +1,8 @@
-
-<app-nav-bar  [Visible]="navBar" [DisplayName]="display_name" [sidenav]="sideNav"></app-nav-bar>   
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<app-nav-bar [DisplayName]="display_name" [sidenav]="sideNav"></app-nav-bar>   
 <mat-sidenav-container class="h-100">
-    <mat-sidenav #sideNav position="start" mode="over">
-        <app-side-menu [sideNav]="sideNav"></app-side-menu>
+    <mat-sidenav #sideNav position="start" mode="side" opened>
+        <app-side-menu [sideNav]="sideNav" *ngIf="loggedIn$ | async"></app-side-menu>
     </mat-sidenav>
     <mat-sidenav-content>            
         <router-outlet></router-outlet>

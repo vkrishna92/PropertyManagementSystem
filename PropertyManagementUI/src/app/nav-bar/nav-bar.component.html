@@ -1,5 +1,5 @@
-<mat-toolbar *ngIf="Visible" class="sticky-top shadow-sm">
-    <button mat-icon-button class="example-icon" (click)="toggleSideNav()" aria-label="Example icon-button with menu icon">
+<mat-toolbar *ngIf="isLoggedIn$ | async" class="sticky-top shadow-sm">
+    <button *ngIf="false"  mat-icon-button class="example-icon" (click)="toggleSideNav()" aria-label="Example icon-button with menu icon">
         <span class="material-symbols-outlined" *ngIf="!sidenav.opened">menu</span>
         <span class="material-symbols-outlined" *ngIf="sidenav.opened">close</span>
     </button>
@@ -11,10 +11,11 @@
     
     <button mat-button aria-label="Example icon-button with share icon"  [matMenuTriggerFor]="menu">
         <span class="material-symbols-outlined mr-3">account_circle</span>
-        {{DisplayName}}
+        {{display_name$ | async}}
     </button> 
     <mat-menu #menu="matMenu">
         <button mat-menu-item>Profile</button>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
 </mat-toolbar>
+<app-spinner-overlay class="track" mode="indeterminate" [value]="100" *ngIf="isprocessing"></app-spinner-overlay>

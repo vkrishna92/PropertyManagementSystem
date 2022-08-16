@@ -27,6 +27,8 @@
     <Compile Remove="Migrations\20220815024117_AddCommunityTblInit.Designer.cs" />
     <Compile Remove="Migrations\20220815030729_TenantTblInit.cs" />
     <Compile Remove="Migrations\20220815030729_TenantTblInit.Designer.cs" />
+    <Compile Remove="Migrations\20220815050037_MaintenanceScheduleAgreementId.cs" />
+    <Compile Remove="Migrations\20220815050037_MaintenanceScheduleAgreementId.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

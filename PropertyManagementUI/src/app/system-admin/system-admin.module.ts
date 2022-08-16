@@ -25,6 +25,7 @@ import {CardModule} from 'primeng/card';
 import { CommunitySetupComponent } from './community-setup/community-setup.component';
 import { BuildingConfigComponent } from './building-config/building-config.component';
 import { UnitConfigComponent } from './unit-config/unit-config.component';
+import { AppModule } from '../app.module';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import { UnitConfigComponent } from './unit-config/unit-config.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatIconModule
+
+    //INTERNAL MODULES 
   ]
 })
 export class SystemAdminModule { }

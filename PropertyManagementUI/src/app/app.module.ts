@@ -18,6 +18,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {MenuModule} from 'primeng/menu';
 import {MenuItem} from 'primeng/api';
 import {MegaMenuModule} from 'primeng/megamenu';
+import {TooltipModule} from 'primeng/tooltip';
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -31,6 +32,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+
+//OTHER IMPORTS
+import { NgxSpinnerModule } from "ngx-spinner";
 
 //COMPONENTS
 import { LoginComponent } from './login/login.component';
@@ -42,6 +48,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MyProfleComponent } from './my-profle/my-profle.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SystemAdminModule } from './system-admin/system-admin.module';
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +58,9 @@ import { SystemAdminModule } from './system-admin/system-admin.module';
     HomeComponent,
     NavBarComponent,
     MyProfleComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    SpinnerOverlayComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +81,7 @@ import { SystemAdminModule } from './system-admin/system-admin.module';
     SidebarModule,
     MenuModule,
     MegaMenuModule,
+    TooltipModule,
     
     //MATERIAL
     MatCardModule,
@@ -84,6 +95,11 @@ import { SystemAdminModule } from './system-admin/system-admin.module';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+
+    //OTHER IMPORTS
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     
     //CUSTOM MODULES
     SystemAdminModule,

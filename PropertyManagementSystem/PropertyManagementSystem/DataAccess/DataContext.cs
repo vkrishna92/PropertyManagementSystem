@@ -27,5 +27,6 @@ namespace PropertyManagementSystem.DataAccess
         public DbSet<MaintenanceSchedule> MaintenanceSchedules { get; set; }
         public DbSet<RentPaymHistory> RentPaymHistorys { get; set; }
         public DbSet<MaintenancePaymHistory> MaintenancePaymHistories { get; set; }
+        public DbSet<MaintenanceAgreement> MaintenanceAgreements { get; set; }
     }
 }

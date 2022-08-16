@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MenuItem } from 'primeng/api';
+import { Observable } from 'rxjs';
 import { AuthDataService } from '../Services/auth-data.service';
 import { AuthService } from '../Services/auth.service';
 
@@ -11,23 +12,36 @@ import { AuthService } from '../Services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
+  isprocessing = false;
   items: MenuItem[];
   sideNavOpen = false;
   @Input() Visible: boolean;
   @Input() DisplayName:string;
   @Input() sidenav:MatSidenav
 
+  isLoggedIn$: Observable<boolean>;
+  display_name$: Observable<string>;
   constructor(private auth:AuthService, private authData:AuthDataService) { }
 
   ngOnInit(): void {
+    console.log("NavBar component Init");
     this.items = [
       { label: 'Profile', icon:'pi pi-user', routerLink:'/myprofile'},
       { label: 'Sign out', icon:'pi pi-sign-out',command:()=>{this.auth.logout()}}
     ];
-    
+    this.isLoggedIn$ = this.auth.loggedIn;
+    this.display_name$ = this.auth.display_name$;
   }
   toggleSideNav(){      
     this.sidenav.toggle();
+  }
+  logout(){
+    this.isprocessing = true;
+    setTimeout(()=>{
+      this.isprocessing = false;
+      this.auth.logout();      
+    },2000)
+    
   }
 
 }

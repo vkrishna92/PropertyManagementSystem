@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyManagementSystem.DataAccess;
 
 namespace PropertyManagementSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220815050412_MaintenanceScheduleAgreementIdFK")]
+    partial class MaintenanceScheduleAgreementIdFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -598,6 +600,15 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("ApartmentId1")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -633,6 +644,10 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId1");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("RentAgreementId");
 
@@ -824,6 +839,14 @@ namespace PropertyManagementSystem.Migrations
 
             modelBuilder.Entity("PropertyManagementSystem.Models.RentSchedule", b =>
                 {
+                    b.HasOne("PropertyManagementSystem.Models.Apartment", "Apartment")
+                        .WithMany()
+                        .HasForeignKey("ApartmentId1");
+
+                    b.HasOne("PropertyManagementSystem.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("PropertyManagementSystem.Models.RentAgreement", "RentAgreement")
                         .WithMany()
                         .HasForeignKey("RentAgreementId")
