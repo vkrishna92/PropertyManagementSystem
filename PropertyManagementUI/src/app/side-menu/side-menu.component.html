@@ -1,11 +1,8 @@
-<div class="details" *ngIf="false">
-    <p class="fs-6">Vamsi Gattupalli</p>
-    <span class="d-block text-secondary ">Building 8</span>
-    <span class="d-block text-secondary">APT 272</span>    
-</div>
-<mat-divider></mat-divider>
-<mat-nav-list class="sidemenu" (click)="toggleSideNav()">
-    <mat-list-item [routerLink]="['/home']" routerLinkActive="router-link-active" pTooltip="Home">      
+<mat-nav-list class="sidemenu">
+    <mat-list-item pTooltip="Apps">      
+        <span class="material-symbols-outlined">apps</span>        
+    </mat-list-item>
+    <mat-list-item class="mt-2" [routerLink]="['/home']" routerLinkActive="router-link-active" pTooltip="Home">      
         <span class="material-symbols-outlined">home</span>        
     </mat-list-item>
     <mat-list-item [routerLink]="['/sysadmin']" routerLinkActive="router-link-active" pTooltip="System Administration" >

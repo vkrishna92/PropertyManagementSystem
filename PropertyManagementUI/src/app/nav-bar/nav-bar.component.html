@@ -1,8 +1,4 @@
 <mat-toolbar *ngIf="isLoggedIn$ | async" class="sticky-top shadow-sm">
-    <button *ngIf="false"  mat-icon-button class="example-icon" (click)="toggleSideNav()" aria-label="Example icon-button with menu icon">
-        <span class="material-symbols-outlined" *ngIf="!sidenav.opened">menu</span>
-        <span class="material-symbols-outlined" *ngIf="sidenav.opened">close</span>
-    </button>
     <h1 class="m-1">Resident Portal</h1>
     <span class="spacer"></span>
     <button mat-icon-button class="mr-3">

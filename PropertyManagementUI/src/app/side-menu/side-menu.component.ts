@@ -8,7 +8,6 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class SideMenuComponent implements OnInit {
 
-  @Input() sideNav:MatSidenav;
   constructor() { }
 
   ngOnInit(): void {

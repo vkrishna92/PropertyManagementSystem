@@ -17,7 +17,6 @@ export class NavBarComponent implements OnInit {
   sideNavOpen = false;
   @Input() Visible: boolean;
   @Input() DisplayName:string;
-  @Input() sidenav:MatSidenav
 
   isLoggedIn$: Observable<boolean>;
   display_name$: Observable<string>;
@@ -31,10 +30,7 @@ export class NavBarComponent implements OnInit {
     ];
     this.isLoggedIn$ = this.auth.loggedIn;
     this.display_name$ = this.auth.display_name$;
-  }
-  toggleSideNav(){      
-    this.sidenav.toggle();
-  }
+  }  
   logout(){
     this.isprocessing = true;
     setTimeout(()=>{
