@@ -13,18 +13,7 @@ html, body
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* MAT-CARD CSS */
-mat-card{
-    padding: 0px !important;
-}
-mat-card-title{
-    border-bottom: 1px solid #D9D9D9;
-    padding: 2.5%;
-    font-size: 17px !important;
-}
-mat-card-content{
-    padding: 2.5%;
-}
+
 :host ::ng-deep .track circle{       
     stroke-opacity: 0.3 !important;
 }

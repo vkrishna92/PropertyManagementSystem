@@ -1,9 +1,9 @@
 export class Register{
-    userName="";
-    email="";
-    password="";
-    firstName="";
-    lastName="";
-    phone="";
-    role="";
+    UserName="";
+    Email="";
+    Password="";
+    FirstName="";
+    LastName="";
+    Phone="";
+    Role="";
 }

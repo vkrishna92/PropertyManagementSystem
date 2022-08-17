@@ -49,13 +49,13 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.touched && this.registerForm.valid){
       this.isprocessing = true;
       let registerUser = new Register();
-      registerUser.email = this.registerForm.controls['email'].value as string;
-      registerUser.firstName = this.registerForm.controls['firstName'].value as string;
-      registerUser.lastName = this.registerForm.controls['lastName'].value as string;
-      registerUser.userName = this.registerForm.controls['username'].value as string;
-      registerUser.phone = this.registerForm.controls['phone'].value as string;
-      registerUser.role = this.registerForm.controls['role'].value as string;
-      registerUser.password = this.registerForm.controls['password'].value as string;
+      registerUser.Email = this.registerForm.controls['email'].value as string;
+      registerUser.FirstName = this.registerForm.controls['firstName'].value as string;
+      registerUser.LastName = this.registerForm.controls['lastName'].value as string;
+      registerUser.UserName = this.registerForm.controls['username'].value as string;
+      registerUser.Phone = this.registerForm.controls['phone'].value as string;
+      registerUser.Role = this.registerForm.controls['role'].value as string;
+      registerUser.Password = this.registerForm.controls['password'].value as string;
       this.authService.register(registerUser).subscribe({
         next:(r)=>{
           this.alert.add({ severity:'success',summary:'Registration completed.',detail: ''});   

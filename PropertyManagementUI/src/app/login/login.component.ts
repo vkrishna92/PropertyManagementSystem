@@ -34,17 +34,16 @@ export class LoginComponent implements OnInit {
 
     if(this.loginForm.valid && this.loginForm.touched){
       let login = new Login();
-      login.userName = this.loginForm.controls['username'].value;
-      login.password = this.loginForm.controls['password'].value;
+      login.UserName = this.loginForm.controls['username'].value as string;
+      login.Password = this.loginForm.controls['password'].value as string;
       this.isprocessing = true;
       this.auth.login(login).subscribe({
         next:(r) =>{
-          localStorage.setItem('access_token',r.token);
+          localStorage.setItem('access_token',r.Token);
           this.auth.loggedIn.next(true);
           let display_name = this.auth.getAttributeValue('unique_name');
           this.auth.display_name$.next(display_name);
-          setTimeout(()=>{ this.isprocessing = false; this.router.navigate(['/home']);   },3000);          
-          this.router.navigate(['/home']);
+          setTimeout(()=>{ this.isprocessing = false; this.router.navigate(['/home']);   },3000);                    
         },
         error:(e)=>{
           this.isprocessing = false;

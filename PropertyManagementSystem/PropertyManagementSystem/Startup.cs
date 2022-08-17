@@ -42,7 +42,8 @@ namespace PropertyManagementSystem
 
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IGenericRepository<ApartmentUnit>, GenericRepository<ApartmentUnit>>();
-            services.AddControllers();
+            services.AddScoped<IGenericRepository<Community>, GenericRepository<Community>>();
+            services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; });
             services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
             {

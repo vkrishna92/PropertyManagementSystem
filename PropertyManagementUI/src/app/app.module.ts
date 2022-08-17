@@ -34,6 +34,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 //OTHER IMPORTS
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -97,6 +98,7 @@ import { RegisterComponent } from './register/register.component';
     MatDividerModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatExpansionModule,
 
     //OTHER IMPORTS
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),

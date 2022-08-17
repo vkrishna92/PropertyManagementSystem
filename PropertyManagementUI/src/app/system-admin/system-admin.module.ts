@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 //PRIME NG
 import {MegaMenuModule} from 'primeng/megamenu';
@@ -26,6 +27,7 @@ import { CommunitySetupComponent } from './community-setup/community-setup.compo
 import { BuildingConfigComponent } from './building-config/building-config.component';
 import { UnitConfigComponent } from './unit-config/unit-config.component';
 import { AppModule } from '../app.module';
+import { CommunityConfigComponent } from './community-config/community-config.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { AppModule } from '../app.module';
     SysAdminHomeComponent,
     CommunitySetupComponent,
     BuildingConfigComponent,
-    UnitConfigComponent,      
+    UnitConfigComponent,
+    CommunityConfigComponent,      
   ],
   imports: [
     CommonModule,
@@ -54,7 +57,8 @@ import { AppModule } from '../app.module';
     MatSelectModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
 
     //INTERNAL MODULES 
   ]
