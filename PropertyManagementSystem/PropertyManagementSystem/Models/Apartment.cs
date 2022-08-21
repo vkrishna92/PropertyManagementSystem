@@ -15,7 +15,10 @@ namespace PropertyManagementSystem.Models
         
         public float AreaSqft { get; set; }
 
-        public long CommunityId { get; set; }
-        public Community Community { get; set; }
+        public string AppUserId { get; set; }
+        public AppUser Owner { get; set; }
+
+        public long BuildingId { get; set; }
+        public Building Building { get; set; }
     }
 }

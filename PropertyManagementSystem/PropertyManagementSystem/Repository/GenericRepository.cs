@@ -19,7 +19,7 @@ namespace PropertyManagementSystem.Repository
             this._entities = dataContext.Set<TEntity>();
         }
 
-        public void Delete(object id)
+        public void Delete(long id)
         {
             TEntity entityToDelete = _entities.Find( id );
             Delete( entityToDelete );
@@ -39,7 +39,7 @@ namespace PropertyManagementSystem.Repository
             return res;
         }
 
-        public async Task<TEntity> GetById(object id)
+        public async Task<TEntity> GetById(long id)
         {
             return await _entities.FindAsync(id);
         }

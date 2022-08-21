@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //PrimeNg
 import {ToastModule} from 'primeng/toast';
@@ -51,6 +51,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SystemAdminModule } from './system-admin/system-admin.module';
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthHeaderInterceptor } from './interceptors/auth-header.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -101,14 +103,16 @@ import { RegisterComponent } from './register/register.component';
     MatExpansionModule,
 
     //OTHER IMPORTS
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     
     //CUSTOM MODULES
     SystemAdminModule,
 
-    NgbModule    
+    NgbModule,
+     FontAwesomeModule    
   ],
-  providers: [MessageService],
+  providers: [MessageService, 
+  {provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

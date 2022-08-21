@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
 import { Login } from '../Models/Login';
 import { AlertService } from '../Services/alert.service';
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required])
   })
-  constructor(private auth:AuthService, private router: Router, private alert: MessageService) { }
+  constructor(private auth:AuthService, private router: Router, private alert: MessageService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     console.log("Login Init")
@@ -37,16 +38,18 @@ export class LoginComponent implements OnInit {
       login.UserName = this.loginForm.controls['username'].value as string;
       login.Password = this.loginForm.controls['password'].value as string;
       this.isprocessing = true;
+      this.spinner.show();
       this.auth.login(login).subscribe({
         next:(r) =>{
           localStorage.setItem('access_token',r.Token);
           this.auth.loggedIn.next(true);
           let display_name = this.auth.getAttributeValue('unique_name');
           this.auth.display_name$.next(display_name);
-          setTimeout(()=>{ this.isprocessing = false; this.router.navigate(['/home']);   },3000);                    
+          setTimeout(()=>{ this.isprocessing = false;this.spinner.hide(); this.router.navigate(['/home']);   },3000);                    
         },
         error:(e)=>{
           this.isprocessing = false;
+          this.spinner.hide();
           console.log(e);
           this.alert.add({ severity:'error',summary:'Login failed.',detail:'Invalid credentials.'});
         }

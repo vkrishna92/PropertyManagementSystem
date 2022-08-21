@@ -12,13 +12,6 @@ html, body
     height: 100%;         
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-:host ::ng-deep .track circle{       
-    stroke-opacity: 0.3 !important;
-}
-
-
 /* Color Theme Swatches in Hex */
 .Grey-1-hex { color: #F2F2F2; }
 .Grey-2-hex { color: #BFBFBF; }

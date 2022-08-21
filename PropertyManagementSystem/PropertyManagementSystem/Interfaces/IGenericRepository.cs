@@ -7,10 +7,10 @@ namespace PropertyManagementSystem.Interfaces
     public interface IGenericRepository<TEntity> where TEntity : class
     {
         Task<List<TEntity>> GetAll(PaginationParameters paginationParameters);
-        Task<TEntity> GetById(object id);
+        Task<TEntity> GetById(long id);
         void Insert(TEntity obj);
         void Update(TEntity obj);
-        void Delete(object id);
+        void Delete(long id);
         void Delete(TEntity entityToDelete);
         Task Save();
     }

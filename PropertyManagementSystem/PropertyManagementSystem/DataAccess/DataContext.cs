@@ -17,7 +17,7 @@ namespace PropertyManagementSystem.DataAccess
 
         public DbSet<AppUser> AppUsers { get; set; }        
         public DbSet<Community> Communities { get; set; }
-        public DbSet<Block> Blocks { get; set; }
+        public DbSet<Building> Buildings { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Tenant> Tenants { get; set; }

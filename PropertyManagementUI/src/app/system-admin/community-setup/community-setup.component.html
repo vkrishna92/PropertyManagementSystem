@@ -1,42 +1,30 @@
 <div class="container">
     <h2 class="mt-3">Community Setup</h2>
-    <mat-tab-group animationDuration="0"> 
-        <mat-tab >
-            <ng-template mat-tab-label>
-                <span class="material-symbols-outlined mr-3">
-                    group
-                </span>
-                Residents
-              </ng-template>
-        </mat-tab>  
-        <mat-tab >
-            <ng-template mat-tab-label>
-                <span class="material-symbols-outlined mr-3">
-                    home
-                </span>  
-                Units              
-              </ng-template>
-              <app-unit-config></app-unit-config>
-        </mat-tab>         
-        <mat-tab >
-            <ng-template mat-tab-label>
-                <span class="material-symbols-outlined">
-                    emoji_transportation
-                </span>
-                 Buildings
-              </ng-template>
-              <app-building-config></app-building-config>
-        </mat-tab>
-        <mat-tab >
-            <ng-template mat-tab-label>
-                <span class="material-symbols-outlined mr-3">
-                    home_work
-                </span>
-                 Community
-              </ng-template>
-              <app-community-config></app-community-config>
-              
-        </mat-tab>
-       
-    </mat-tab-group>
+    <div class="tab-view-panel">
+        <p-tabView  styleClass="tabview-custom">               
+            <p-tabPanel>     
+                <ng-template pTemplate = "header">
+                    <span class="material-symbols-outlined">home</span>                
+                    <span>Units</span>
+                </ng-template>      
+                <app-apartment-config></app-apartment-config>
+            </p-tabPanel>         
+            <p-tabPanel>   
+                <ng-template pTemplate = "header">
+                    <span class="material-symbols-outlined">emoji_transportation</span>
+                    <span>Buildings</span>
+                </ng-template>    
+                <app-building-config></app-building-config>                         
+            </p-tabPanel>
+            <p-tabPanel>                        
+                <ng-template pTemplate = "header">
+                    <span class="material-symbols-outlined mr-3">home_work</span>              
+                    <span>Community</span>
+                </ng-template>
+                <app-community-config></app-community-config>                  
+            </p-tabPanel>
+           
+        </p-tabView>
+    </div>
+    
 </div>

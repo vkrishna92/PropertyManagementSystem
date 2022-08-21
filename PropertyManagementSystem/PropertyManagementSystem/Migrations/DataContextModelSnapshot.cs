@@ -233,6 +233,9 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<float>("AreaSqft")
                         .HasColumnType("real");
 
@@ -240,7 +243,7 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
-                    b.Property<long>("CommunityId")
+                    b.Property<long>("BuildingId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("CreatedBy")
@@ -262,20 +265,36 @@ namespace PropertyManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommunityId");
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BuildingId");
 
                     b.ToTable("Apartments");
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.Block", b =>
+            modelBuilder.Entity("PropertyManagementSystem.Models.Building", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AddressLine1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<long>("CommunityId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -294,11 +313,22 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("UseCommunityAddress")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Zipcode")
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
                     b.HasKey("Id");
 
                     b.HasIndex("CommunityId");
 
-                    b.ToTable("Blocks");
+                    b.ToTable("Buildings");
                 });
 
             modelBuilder.Entity("PropertyManagementSystem.Models.Community", b =>
@@ -742,14 +772,18 @@ namespace PropertyManagementSystem.Migrations
 
             modelBuilder.Entity("PropertyManagementSystem.Models.Apartment", b =>
                 {
-                    b.HasOne("PropertyManagementSystem.Models.Community", "Community")
+                    b.HasOne("PropertyManagementSystem.Models.AppUser", "Owner")
                         .WithMany()
-                        .HasForeignKey("CommunityId")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("PropertyManagementSystem.Models.Building", "Building")
+                        .WithMany()
+                        .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PropertyManagementSystem.Models.Block", b =>
+            modelBuilder.Entity("PropertyManagementSystem.Models.Building", b =>
                 {
                     b.HasOne("PropertyManagementSystem.Models.Community", "Community")
                         .WithMany()

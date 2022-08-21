@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<div class="mt-2">
+    <p-menubar [model]="items" class="mt-2"></p-menubar>  
+    <div class="row mb-3">
+        <div class="col-4">
+            <div class="mt-4">
+                <p-listbox [options]="apartments" [(ngModel)]="selectedApartment" optionLabel="Name" [filter]="true"
+                [listStyle]="{'max-height':'400px'}" (onClick)="selectApartment()"></p-listbox>         
+            </div>            
+        </div>
+        <div class="col-8">
+            <form [formGroup]="apartmentForm">
+                <div class="row">
+                    <b class="m-2">General Information</b>
+                </div>     
+                                            
+                <div class="row">
+                    <div class="col">
+                        <div class="field m-2">
+                            <small for="inputtext">Apartment Number</small>
+                            <input type="text" id="inputtext" class="w-100" pInputText formControlName="apartmentNum"  />                         
+                        </div>
+                        <div class="field m-2">
+                            <small class="pl-2 block text-secondary">Building</small>
+                            <p>
+                                <p-dropdown [options]="buildings" [style]="{'minWidth':'100%'}" 
+                                formControlName="buildingId"
+                                optionLabel="Name" optionValue="Id"></p-dropdown>                            
+                            </p>                            
+                        </div>    
+                        <div class="field m-2">
+                            <small class="pl-2 block text-secondary">Owner</small>
+                            <input type="text" id="inputtext" class="w-100" pInputText formControlName="appUserId"  />  
+                        </div>                     
+                    </div>                    
+                    <div class="col">
+                        <div class="field m-2">
+                            <small class="pl-2 block text-secondary">Floor</small>
+                            <p>
+                                <p-autoComplete formControlName="city" [suggestions]="floors"
+                            [style]="{'minWidth':'100%'}" 
+                             (completeMethod)="searchFloor($event)"></p-autoComplete>                            
+                            </p>
+                                                      
+                        </div> 
+                        <div class="field m-2">
+                            <small class="pl-2 block text-secondary">Area Sqft</small>
+                            <input type="text" id="inputtext" class="w-100" pInputText formControlName="areaSqft"  />  
+                        </div>
+                    </div>    
+                </div>                                                           
+            </form>
+        </div>
+    </div>            
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoffee, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import {MegaMenuItem,MenuItem} from 'primeng/api';
 
 @Component({
@@ -8,6 +9,7 @@ import {MegaMenuItem,MenuItem} from 'primeng/api';
 })
 export class CommunitySetupComponent implements OnInit {
 
+  faBuilding = faBuilding;
   items: MenuItem[];
   
   constructor() { }

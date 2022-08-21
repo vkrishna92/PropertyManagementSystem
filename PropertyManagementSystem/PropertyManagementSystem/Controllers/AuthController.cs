@@ -72,5 +72,38 @@ namespace PropertyManagementSystem.Controllers
 
             return Ok(idRole);
         }
+
+        [HttpGet("getUserById")]
+        public async Task<IActionResult> getUserById(string userId)
+        {            
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound();
+            AppUserDto appUserDto = new AppUserDto();
+            appUserDto.Id = userId;
+            appUserDto.Email = user.Email;
+            appUserDto.UserName = user.UserName;
+            appUserDto.FirstName = user.FirstName;
+            appUserDto.LastName = user.LastName;
+            appUserDto.Phone = user.PhoneNumber;            
+            return Ok(user);
+        }
+
+        [HttpGet("getUserByEmail")]
+        public async Task<IActionResult> getUserByEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return NotFound();
+            AppUserDto appUserDto = new AppUserDto();
+            appUserDto.Id = user.Id;
+            appUserDto.Email = user.Email;
+            appUserDto.UserName = user.UserName;
+            appUserDto.FirstName = user.FirstName;
+            appUserDto.LastName = user.LastName;
+            appUserDto.Phone = user.PhoneNumber;
+            return Ok(user);
+        }
+
     }
 }

@@ -14,4 +14,9 @@ export class CommunityService {
   Get(){
     return this.http.get<Community>(this.baseUrl);
   }
+  update(community:Community){
+    return this.http.put<Community>(this.baseUrl, community);
+  }
+ 
+  
 }
