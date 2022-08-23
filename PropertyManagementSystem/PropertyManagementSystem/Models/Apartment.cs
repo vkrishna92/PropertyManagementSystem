@@ -8,11 +8,7 @@ namespace PropertyManagementSystem.Models
         public string ApartmentNum { get; set; }
 
         [Required,StringLength(10)]
-        public string Floor { get; set; }
-
-        [StringLength(10)]
-        public string Block { get; set; }
-        
+        public string Floor { get; set; }        
         public float AreaSqft { get; set; }
 
         public string AppUserId { get; set; }

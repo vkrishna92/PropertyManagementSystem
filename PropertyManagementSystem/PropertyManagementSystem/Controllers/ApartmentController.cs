@@ -17,19 +17,19 @@ namespace PropertyManagementSystem.Controllers
         {
             _apartmentRepository = apartmentRepository;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAll(PaginationParameters paginationParameters)
-        {
-            var apartments = await _apartmentRepository.GetAll(paginationParameters);
-            return Ok(apartments);
-        }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
             var apartment = await _apartmentRepository.GetById(id);
             return Ok(apartment);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] PaginationParameters paginationParameters)
+        {
+            var apartments = await _apartmentRepository.GetAll(paginationParameters);
+            return Ok(apartments);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Insert(Apartment apartment)
         {
@@ -44,7 +44,7 @@ namespace PropertyManagementSystem.Controllers
             await _apartmentRepository.Save();
             return Ok(apartment);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             _apartmentRepository.Delete(id);

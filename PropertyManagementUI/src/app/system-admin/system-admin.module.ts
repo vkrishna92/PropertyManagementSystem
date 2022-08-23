@@ -35,6 +35,10 @@ import {ToastModule} from 'primeng/toast';
 import {CheckboxModule} from 'primeng/checkbox';
 import {DropdownModule} from 'primeng/dropdown';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {AvatarModule} from 'primeng/avatar';
+import { ChipModule } from 'primeng/chip';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import {DividerModule} from 'primeng/divider';
 
 //OTHER IMPORTS
 //import { NgxSpinnerModule } from "ngx-spinner";
@@ -81,6 +85,10 @@ import { ApartmentConfigComponent } from './apartment-config/apartment-config.co
     DropdownModule,
     CheckboxModule,
     AutoCompleteModule,
+    AvatarModule,
+    AvatarGroupModule,
+    ChipModule,
+    DividerModule,
     
     //OTHER IMPORTS
     //NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),

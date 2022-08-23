@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
 import { Tokens } from '../Models/Tokens';
 import { Register } from '../Models/Register';
+import { AppUserDto } from '../Models/AppUser';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,10 @@ export class AuthService {
     const token = localStorage.getItem('access_token');
     var tmpToken = this.jwtHelper.decodeToken(token);
     return tmpToken[key];
+  }
+
+  getUserByEmail(email:string){
+    return this.http.get<AppUserDto>(this.baseUrl+"getUserByEmail/"+email);
   }
 
 }

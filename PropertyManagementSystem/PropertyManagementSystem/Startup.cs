@@ -40,8 +40,7 @@ namespace PropertyManagementSystem
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();
 
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IGenericRepository<ApartmentUnit>, GenericRepository<ApartmentUnit>>();
+            services.AddScoped<IAuthRepository, AuthRepository>();            
             services.AddScoped<IGenericRepository<Community>, GenericRepository<Community>>();
             services.AddScoped<IBuildingRepository, BuildingRepository>();
             services.AddScoped<IApartmentRepository, ApartmentRepository>();

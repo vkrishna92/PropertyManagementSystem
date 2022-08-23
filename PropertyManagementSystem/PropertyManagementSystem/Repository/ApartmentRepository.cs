@@ -33,10 +33,11 @@ namespace PropertyManagementSystem.Repository
 
         public async Task<List<Apartment>> GetAll(PaginationParameters paginationParameters)
         {
+            
             var apartments = await _dataContext.Apartments
                                     .Include(b => b.Building)
                                     .Include(a=> a.Owner)
-                                    .Skip(paginationParameters.PageNumber * paginationParameters.PageSize)
+                                    .Skip((paginationParameters.PageNumber-1) * paginationParameters.PageSize)
                                     .Take(paginationParameters.PageSize).ToListAsync();
             return apartments;
         }
@@ -56,8 +57,18 @@ namespace PropertyManagementSystem.Repository
                 throw new Exception("Cannot insert null object in Apartment table.");
             var building = _dataContext.Buildings.FirstOrDefault(b => b.Id == obj.BuildingId);
             var appUser = _dataContext.AppUsers.FirstOrDefault(a => a.Id == obj.AppUserId);
-            if(building == null || appUser == null)
-                throw new Exception("Cannot insert in Apartment table. Building or AppUser is null.");
+            if(building == null)
+                throw new Exception("Cannot insert in Apartment table. Building is null.");
+            if(appUser == null)
+            {
+                obj.AppUserId = null;
+                obj.Owner = null;
+            }
+            else
+            {
+                obj.AppUserId =appUser.Id;
+                obj.Owner = appUser;
+            }
             obj.Building = building;
             obj.Owner = appUser;
             _dataContext.Apartments.Add(obj);
@@ -75,11 +86,29 @@ namespace PropertyManagementSystem.Repository
             var apartment = _dataContext.Apartments.FirstOrDefault(a => a.Id == obj.Id);
             var building = _dataContext.Buildings.FirstOrDefault(b => b.Id == obj.BuildingId);
             var appUser = _dataContext.AppUsers.FirstOrDefault(a => a.Id == obj.AppUserId);
-            if (apartment == null || building == null || appUser == null)
-                throw new Exception("Cannot update in Apartment table.Apartment, Building or AppUser is null.");
-            obj.Building = building;
-            obj.Owner = appUser;
-            _dataContext.Apartments.Update(obj);
+            if (apartment == null || building == null)
+                throw new Exception("Cannot update in Apartment table.Apartment or Building is null.");
+
+            apartment.ApartmentNum = obj.ApartmentNum;            
+            if(appUser == null)
+            {
+                //Scenario where owner is removed from apartment.
+                apartment.AppUserId = null;
+                apartment.Owner = null;
+            }
+            else
+            {
+                apartment.AppUserId = appUser.Id;
+                apartment.Owner = appUser;
+            }
+           
+            apartment.BuildingId = obj.BuildingId;
+            apartment.Building = building;
+            apartment.AreaSqft = obj.AreaSqft;
+            apartment.Floor = obj.Floor;
+            apartment.ModifiedDateTime = DateTime.UtcNow;
+            
+            _dataContext.Apartments.Update(apartment);
         }
     }
 }

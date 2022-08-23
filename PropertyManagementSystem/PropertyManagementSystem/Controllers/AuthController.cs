@@ -73,7 +73,7 @@ namespace PropertyManagementSystem.Controllers
             return Ok(idRole);
         }
 
-        [HttpGet("getUserById")]
+        [HttpGet("getUserById/{userId}")]
         public async Task<IActionResult> getUserById(string userId)
         {            
             var user = await _userManager.FindByIdAsync(userId);
@@ -89,7 +89,7 @@ namespace PropertyManagementSystem.Controllers
             return Ok(user);
         }
 
-        [HttpGet("getUserByEmail")]
+        [HttpGet("getUserByEmail/{email}")]
         public async Task<IActionResult> getUserByEmail(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);

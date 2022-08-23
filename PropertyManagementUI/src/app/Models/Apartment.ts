@@ -4,8 +4,7 @@ import { Building } from "./Building";
 
 export interface Apartment extends BaseModel {
     ApartmentNum: string | null;
-    Floor: string | null;
-    Block: string | null;
+    Floor: string | null; 
     AreaSqft: number | null;
     AppUserId: string | null;
     Owner: AppUserDto | null;
