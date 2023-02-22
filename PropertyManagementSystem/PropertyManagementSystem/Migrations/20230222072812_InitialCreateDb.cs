@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PropertyManagementSystem.Migrations
 {
-    public partial class InitialCommitMac : Migration
+    public partial class InitialCreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -224,6 +224,7 @@ namespace PropertyManagementSystem.Migrations
                     Floor = table.Column<string>(maxLength: 10, nullable: false),
                     AreaSqft = table.Column<float>(nullable: false),
                     AppUserId = table.Column<string>(nullable: true),
+                    tenantId = table.Column<string>(nullable: true),
                     BuildingId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -241,6 +242,12 @@ namespace PropertyManagementSystem.Migrations
                         principalTable: "Buildings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Apartments_AspNetUsers_tenantId",
+                        column: x => x.tenantId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -383,6 +390,8 @@ namespace PropertyManagementSystem.Migrations
                     PeriodStartDate = table.Column<DateTime>(nullable: false),
                     PeriodEndDate = table.Column<DateTime>(nullable: false),
                     MaintenanceAmount = table.Column<float>(nullable: false),
+                    Status = table.Column<bool>(nullable: false),
+                    TransDate = table.Column<DateTime>(nullable: false),
                     MaintenanceAgreementId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -485,6 +494,11 @@ namespace PropertyManagementSystem.Migrations
                 name: "IX_Apartments_BuildingId",
                 table: "Apartments",
                 column: "BuildingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Apartments_tenantId",
+                table: "Apartments",
+                column: "tenantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

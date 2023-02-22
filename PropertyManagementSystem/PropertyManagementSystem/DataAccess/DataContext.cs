@@ -12,7 +12,7 @@ namespace PropertyManagementSystem.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(builder);                            
         }
 
         public DbSet<AppUser> AppUsers { get; set; }        

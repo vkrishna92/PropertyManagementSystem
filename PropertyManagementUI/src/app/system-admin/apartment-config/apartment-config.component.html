@@ -1,87 +1,125 @@
 <p-toast></p-toast>
-<div class="mt-2">
-    <p-menubar [model]="items" class="mt-2"></p-menubar>  
+<div class="mt-2 ">
+    <p-menubar [model]="items" class="mt-2"></p-menubar>
     <div class="row mb-3">
         <div class="col-4">
             <div class="mt-4">
                 <p-listbox [options]="apartments"  [(ngModel)]="selectedApartment" optionLabel="ApartmentNum" [filter]="true"
-                [listStyle]="{'max-height':'400px'}" (onClick)="selectApartment()"></p-listbox>         
-            </div>            
+                [listStyle]="{'max-height':'400px'}" (onClick)="selectApartment()"></p-listbox>
+            </div>
         </div>
-        <div class="col-8">
+        <div class="col-8 apartment-setup">
             <form [formGroup]="apartmentForm">
                 <div class="row">
                     <b class="m-2">General Information</b>
-                </div>                                                 
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="field m-2">
                             <small for="inputtext">Apartment Number</small>
-                            <input type="text" id="inputtext" class="w-100" pInputText formControlName="apartmentNum"  />                         
+                            <input type="text" id="inputtext" class="w-100" pInputText formControlName="apartmentNum"  />
                         </div>
                         <div class="field m-2">
                             <small class="pl-2 block text-secondary">Building</small>
                             <p>
-                                <p-dropdown [options]="buildings" [style]="{'minWidth':'100%'}" 
+                                <p-dropdown [options]="buildings" [style]="{'minWidth':'100%'}"
                                 formControlName="buildingId"
-                                optionLabel="Name" optionValue="Id"></p-dropdown>                            
-                            </p>                            
-                        </div>    
-                        <div class="field m-2">                            
-                        </div>                     
-                    </div>                    
+                                optionLabel="Name" optionValue="Id"></p-dropdown>
+                            </p>
+                        </div>
+                        <div class="field m-2">
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="field m-2">
-                            <small class="pl-2 block text-secondary">Floor</small>                            
-                            <p-dropdown [options]="floors" [style]="{'minWidth':'100%'}" 
+                            <small class="pl-2 block text-secondary">Floor</small>
+                            <p-dropdown [options]="floors" [style]="{'minWidth':'100%'}"
                             formControlName="floor"
-                            optionLabel="" optionValue=""></p-dropdown>   
-                        </div> 
+                            optionLabel="" optionValue=""></p-dropdown>
+                        </div>
                         <div class="field m-2">
                             <small class="pl-2 block text-secondary">Area sqft</small>
-                            <input type="number" id="inputtext" class="p-inputtext-sm" class="w-100" pInputText formControlName="areaSqft"  />  
+                            <input type="number" id="inputtext" class="p-inputtext-sm" class="w-100" pInputText formControlName="areaSqft"  />
                         </div>
-                    </div>                      
-                </div>                                                                           
+                    </div>
+                </div>
             </form>
             <p-divider></p-divider>
             <form [formGroup]="ownerInformationForm">
                 <div class="row">
-                    <b class="m-2">Owner Information</b>                        
-                </div>  
-                <div class="row">                                                
+                    <b class="m-2">Owner Information</b>
+                </div>
+                <div class="row">
                 </div>
                 <div class="row">
                     <div class="field m-2">
-                        <span class="p-input-icon-right">                            
+                        <span class="p-input-icon-right">
                             <input type="text" pInputText  placeholder="Search email" #email class="w-100" (input)="getUserByEmail(email.value)"/>
                             <i class="pi pi-search"></i>
                         </span>
                     </div>
-                    
+
                     <div class="col">
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">First name</small>
                             <input type="text" class="p-inputtext-sm" class="w-100" formControlName="firstName" pInputText />
-                        </div> 
+                        </div>
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">Phone number</small>
                             <input type="text" class="p-inputtext-sm"  class="w-100" formControlName="phone" pInputText />
-                        </div> 
+                        </div>
 
                     </div>
                     <div class="col">
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">Last name</small>
                             <input type="text" class="p-inputtext-sm" class="w-100" formControlName="lastName" pInputText />
-                        </div> 
+                        </div>
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">Email address</small>
                             <input type="email" class="p-inputtext-sm" class="w-100" pInputText formControlName="email" />
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </form>
+            <p-divider></p-divider>
+            <form>
+              <div class="row">
+                <b class="m-2">Tenant Information</b>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="field m-2">
+                        <span class="p-input-icon-right">
+                            <input type="text" pInputText  placeholder="Search email" #email class="w-100" (input)="getUserByEmail(email.value)"/>
+                            <i class="pi pi-search"></i>
+                        </span>
+                    </div>
+
+                    <div class="col">
+                        <div class="field m-2">
+                            <small class="pl-2 text-secondary">First name</small>
+                            <input type="text" class="p-inputtext-sm" class="w-100" formControlName="firstName" pInputText />
+                        </div>
+                        <div class="field m-2">
+                            <small class="pl-2 text-secondary">Phone number</small>
+                            <input type="text" class="p-inputtext-sm"  class="w-100" formControlName="phone" pInputText />
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="field m-2">
+                            <small class="pl-2 text-secondary">Last name</small>
+                            <input type="text" class="p-inputtext-sm" class="w-100" formControlName="lastName" pInputText />
+                        </div>
+                        <div class="field m-2">
+                            <small class="pl-2 text-secondary">Email address</small>
+                            <input type="email" class="p-inputtext-sm" class="w-100" pInputText formControlName="email" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
-    </div>            
+    </div>
 </div>

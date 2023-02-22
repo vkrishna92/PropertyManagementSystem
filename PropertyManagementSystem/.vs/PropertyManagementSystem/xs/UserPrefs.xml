@@ -1,9 +1,17 @@
 ﻿<Properties StartupConfiguration="{FE65A58C-9934-4F47-BF8D-35E370833B9D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PropertyManagementSystem/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PropertyManagementSystem/Controllers/ApartmentController.cs">
     <Files>
-      <File FileName="PropertyManagementSystem/Startup.cs" Line="38" Column="59" />
-      <File FileName="PropertyManagementSystem/WeatherForecast.cs" Line="1" Column="1" />
-      <File FileName="PropertyManagementSystem/Program.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Startup.cs" Line="39" Column="58" />
+      <File FileName="PropertyManagementSystem/WeatherForecast.cs" />
+      <File FileName="PropertyManagementSystem/Program.cs" />
+      <File FileName="PropertyManagementSystem/appsettings.Development.json" Line="10" Column="60" />
+      <File FileName="PropertyManagementSystem/Migrations/DataContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Migrations/20230221004935_InitialCommitMac.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Controllers/AuthController.cs" Line="51" Column="30" />
+      <File FileName="PropertyManagementSystem/Controllers/CommunityController.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Controllers/ApartmentController.cs" Line="46" Column="10" />
+      <File FileName="PropertyManagementSystem/Interfaces/IApartmentRepository.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Controllers/BaseController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,6 +19,9 @@
           <Node name="PropertyManagementSystem" expanded="True">
             <Node name="PropertyManagementSystem" expanded="True">
               <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -20,7 +31,9 @@
   <MonoDevelop.Ide.ItemProperties.PropertyManagementSystem PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Controllers/AuthController.cs" relfile="PropertyManagementSystem/Controllers/AuthController.cs" line="31" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

@@ -7,12 +7,16 @@
 
 .mat-tab-body-content{
     height: 0px !important;
-    overflow: hidden !important;    
+    overflow: hidden !important;
 }
 
 .tab-view-panel{
   background-color: white;
   border: 1px none white;
   padding: 20px;
-  border-radius: 25px;  
+  border-radius: 25px;
+}
+.apartment-setup{
+  max-height: 700px;
+  overflow-y: scroll;
 }

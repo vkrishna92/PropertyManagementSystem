@@ -19,6 +19,7 @@ import {MenuModule} from 'primeng/menu';
 import {MenuItem} from 'primeng/api';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {TooltipModule} from 'primeng/tooltip';
+import {PanelModule} from 'primeng/panel';
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -39,6 +40,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 //OTHER IMPORTS
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AgGridModule } from 'ag-grid-angular';
+
 
 //COMPONENTS
 import { LoginComponent } from './login/login.component';
@@ -57,6 +60,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FinanceDashboardComponent } from './finance-dashboard/finance-dashboard.component';
 import {CalendarModule} from 'primeng/calendar';
 import { CommunityServiceComponent } from './community-service/community-service.component';
+import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-period.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,7 @@ import { CommunityServiceComponent } from './community-service/community-service
     RegisterComponent,
     FinanceDashboardComponent,
     CommunityServiceComponent,
+    UnitPaymentPeriodComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,12 +115,14 @@ import { CommunityServiceComponent } from './community-service/community-service
     MatTabsModule,
     //OTHER IMPORTS
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
+    AgGridModule,
 
     //CUSTOM MODULES
     SystemAdminModule,
 
     //PrimeNg
     CalendarModule,
+    PanelModule,
 
     NgbModule,
      FontAwesomeModule

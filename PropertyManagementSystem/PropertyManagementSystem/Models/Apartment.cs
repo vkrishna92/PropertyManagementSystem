@@ -14,6 +14,9 @@ namespace PropertyManagementSystem.Models
         public string AppUserId { get; set; }
         public AppUser Owner { get; set; }
 
+        public string tenantId { get; set; }
+        public AppUser Tenant { get; set; }
+
         public long BuildingId { get; set; }
         public Building Building { get; set; }
     }

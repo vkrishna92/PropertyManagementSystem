@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { zip } from 'rxjs';
 import { Apartment } from 'src/app/Models/Apartment';
@@ -45,11 +46,13 @@ export class ApartmentConfigComponent implements OnInit {
     phone: new FormControl({value:'',disabled:true})
   })
 
-  constructor(private buildingService: BuildingService, private apartmentService: ApartmentService, private messageService: MessageService, private auth: AuthService) {
+  constructor(private buildingService: BuildingService, private apartmentService: ApartmentService,
+    private messageService: MessageService, private auth: AuthService, private router: Router) {
     this.items = [
       { label: 'New', icon: 'pi pi-fw pi-plus', command: (event)=>{this.clickNew();}},
       { label: 'Save', icon: 'pi pi-fw pi-save', command: (event)=>{this.clickSave()}},
-      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}}
+      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}},
+      { label: 'Maintenance', icon: 'pi pi-fw pi-calendar', command: (event)=>{this.clickPaymentPeriods()}},
     ];
   }
 
@@ -103,7 +106,6 @@ export class ApartmentConfigComponent implements OnInit {
     });
   }
   clickSave(){
-    //console.log(this.apartmentForm.value);
     let apartment: Apartment = {
       Id: this.apartmentForm.controls['id'].value,
       ApartmentNum: this.apartmentForm.controls['apartmentNum'].value,
@@ -118,7 +120,6 @@ export class ApartmentConfigComponent implements OnInit {
       ModifiedBy: null,
       ModifiedDateTime: new Date()
     }
-    console.log(apartment);
     if(apartment.Id == 0){
       this.apartmentService.post(apartment).subscribe({
         next:(value)=> {
@@ -169,13 +170,11 @@ export class ApartmentConfigComponent implements OnInit {
   getUserByEmail(email:string){
     this.auth.getUserByEmail(email).subscribe({
       next:(value)=> {
-          console.log(value);
           this.setOwnerForm(value)
       },
     })
   }
   setApartmentForm(apartment:Apartment){
-    console.log(apartment);
     if(apartment!= null){
       this.apartmentForm.patchValue({
         id: apartment.Id,
@@ -188,7 +187,6 @@ export class ApartmentConfigComponent implements OnInit {
     }
   }
   setOwnerForm(owner: AppUserDto){
-    console.log(owner);
     if(owner!=null){
       this.ownerInformationForm.patchValue({
         id: owner.Id,
@@ -202,7 +200,8 @@ export class ApartmentConfigComponent implements OnInit {
       this.ownerInformationForm.reset();
     }
   }
-  onRemoveOwner(){
+  clickPaymentPeriods(){
+    this.router.navigate(['/payment-periods']);
   }
 
 }

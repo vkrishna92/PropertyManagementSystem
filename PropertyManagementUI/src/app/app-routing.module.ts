@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { CommunitySetupComponent } from './system-admin/community-setup/community-setup.component';
 import { SysAdminHomeComponent } from './system-admin/sys-admin-home/sys-admin-home.component';
 import { SysAdminShellComponent } from './system-admin/sys-admin-shell/sys-admin-shell.component';
+import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-period.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent, canActivate:[AuthGuard]},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'myprofile',component:MyProfleComponent},
   {path:'finance-dashboard',component:FinanceDashboardComponent},
   {path:'community-service',component:CommunityServiceComponent},
+  {path:'payment-periods',component:UnitPaymentPeriodComponent},
   {path:'sysadmin',component:SysAdminShellComponent,
     children:[
       {path:'',component:SysAdminHomeComponent},

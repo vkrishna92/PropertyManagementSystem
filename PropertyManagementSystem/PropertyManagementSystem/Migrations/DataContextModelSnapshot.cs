@@ -251,11 +251,16 @@ namespace PropertyManagementSystem.Migrations
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("tenantId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("BuildingId");
+
+                    b.HasIndex("tenantId");
 
                     b.ToTable("Apartments");
                 });
@@ -480,6 +485,12 @@ namespace PropertyManagementSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PeriodStartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("TransDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -759,6 +770,10 @@ namespace PropertyManagementSystem.Migrations
                         .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PropertyManagementSystem.Models.AppUser", "Tenant")
+                        .WithMany()
+                        .HasForeignKey("tenantId");
                 });
 
             modelBuilder.Entity("PropertyManagementSystem.Models.Building", b =>

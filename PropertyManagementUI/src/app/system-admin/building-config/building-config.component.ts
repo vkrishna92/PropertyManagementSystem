@@ -41,30 +41,29 @@ export class BuildingConfigComponent implements OnInit {
   });
   useCommunityAddress = false;
 
-  constructor(private buildingService: BuildingService, private messageService: MessageService) {    
+  constructor(private buildingService: BuildingService, private messageService: MessageService) {
     this.getBuildings();
   }
 
   ngOnInit(): void {
     this.height = screen.height;
     this.width = screen.width;
-    
+
     this.items = [
       { label: 'New', icon: 'pi pi-fw pi-plus', command: (event)=>{this.clickNew();}},
-      { label: 'Save', icon: 'pi pi-fw pi-save', command: (event)=>{this.clickSave()}},      
-      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}}  
-    ];    
+      { label: 'Save', icon: 'pi pi-fw pi-save', command: (event)=>{this.clickSave()}},
+      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}}
+    ];
   }
 
   getBuildings(){
     this.buildingService.get(this.pagination).subscribe({
       next:(r)=>{
-        this.buildings = r;    
+        this.buildings = r;
         if(this.buildings.length > 0){
           //set form
           this.setBuildingForm(this.buildings[0]);
-        } 
-        console.log(r);   
+        }
       }
     })
   }
@@ -79,14 +78,14 @@ export class BuildingConfigComponent implements OnInit {
       city: building.City,
       state: building.State,
       country: building.Country,
-      zipcode: building.Zipcode      
+      zipcode: building.Zipcode
     })
   }
 
   //TOOLBAR ACTIONS
   clickSave(){
     if(this.buildingForm.touched && this.buildingForm.valid){
-      let building: Building = 
+      let building: Building =
       {
         Id: this.buildingForm.controls['id'].value,
         Name: this.buildingForm.controls['name'].value,
@@ -102,7 +101,7 @@ export class BuildingConfigComponent implements OnInit {
         CreatedBy :'',
         CreatedDateTime: new Date(),
         ModifiedBy:'',
-        ModifiedDateTime: new Date()                
+        ModifiedDateTime: new Date()
       }
       if(building.Id != 0){
         this.buildingService.update(building).subscribe({
@@ -125,17 +124,17 @@ export class BuildingConfigComponent implements OnInit {
             this.messageService.add({severity:'error',summary:'Unable to save building information.'});
           }
         });
-      }     
-    }           
+      }
+    }
   }
-  clickNew(){    
-    this.buildingForm.reset();    
+  clickNew(){
+    this.buildingForm.reset();
   }
   clickDelete(){
     this.buildingService.delete(this.selectedBuilding.Id).subscribe({
       next:(r)=>{
         this.getBuildings();
-        this.messageService.add({severity:'success',summary:'Building information removed.'});        
+        this.messageService.add({severity:'success',summary:'Building information removed.'});
       },
       error:(err)=> {
         this.messageService.add({severity:'error',summary:'Unable to delete building information.'});

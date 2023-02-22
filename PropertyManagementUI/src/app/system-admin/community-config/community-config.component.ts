@@ -30,7 +30,6 @@ export class CommunityConfigComponent implements OnInit {
   getCommunityInfo(){
     this.communityService.Get().subscribe({
       next: (r)=>{
-        console.log(this.currentCommunity);
         this.setCommunityForm(r);
       },error:(err)=> {
           this.messageService.add({severity:'error',summary:'Unable to fetch community information'});
