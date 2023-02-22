@@ -10,7 +10,7 @@ import { PaginationParameters } from '../Models/PaginationParameters';
 export class ApartmentService {
 
   baseUrl = environment.baseUrl+"Apartment/";
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
   getAll(paginationParam: PaginationParameters){
     const params = new HttpParams()
     .set('PageNumber',paginationParam.PageNumber)
@@ -29,6 +29,9 @@ export class ApartmentService {
   }
   delete(id:number){
     return this.http.delete<any>(this.baseUrl+id);
+  }
+  getMyUnits(){
+    return this.http.get<Apartment[]>(this.baseUrl+"myUnits");
   }
 
 }

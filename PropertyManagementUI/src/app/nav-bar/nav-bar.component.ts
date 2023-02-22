@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MenuItem } from 'primeng/api';
 import { Observable } from 'rxjs';
@@ -17,6 +17,7 @@ export class NavBarComponent implements OnInit {
   sideNavOpen = false;
   @Input() Visible: boolean;
   @Input() DisplayName:string;
+  @Output() sidemenuEvent = new EventEmitter<any>();
 
   isLoggedIn$: Observable<boolean>;
   display_name$: Observable<string>;
@@ -30,14 +31,17 @@ export class NavBarComponent implements OnInit {
     ];
     this.isLoggedIn$ = this.auth.loggedIn;
     this.display_name$ = this.auth.display_name$;
-  }  
+  }
   logout(){
     this.isprocessing = true;
     setTimeout(()=>{
       this.isprocessing = false;
-      this.auth.logout();      
+      this.auth.logout();
     },2000)
-    
+
+  }
+  sideMenuClick(){
+    this.sidemenuEvent.emit();
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { Observable } from 'rxjs';
@@ -19,17 +20,19 @@ export class AppComponent implements OnInit {
   navBar=false;
   display_name ='';
   loggedIn$: Observable<boolean>;
+  showSideNav = false;
+  @ViewChild(MatSidenav) sideNav: MatSidenav;
   constructor(private auth:AuthService,private authData:AuthDataService, private router:Router,
-              private primengConfig: PrimeNGConfig, private messageService: MessageService) {  
+              private primengConfig: PrimeNGConfig, private messageService: MessageService) {
   }
   ngOnInit(): void {
-    console.log("app component init");    
+    console.log("app component init");
     this.primengConfig.ripple = true;
     this.loggedIn$ = this.auth.loggedIn;
     if(!this.authData.isExpired()){
       console.log("All ok!");
       this.navBar = true;
-      this.auth.loggedIn.next(true);   
+      this.auth.loggedIn.next(true);
       let display_name = this.auth.getAttributeValue('unique_name');
       this.auth.display_name$.next(display_name);
       console.log(this.display_name)
@@ -37,5 +40,8 @@ export class AppComponent implements OnInit {
   }
   showSuccess() {
     this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'});
+  }
+  toggleSideNav(){
+    this.sideNav.toggle();
   }
 }

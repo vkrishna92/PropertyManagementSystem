@@ -1,5 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommunityServiceComponent } from './community-service/community-service.component';
+import { FinanceDashboardComponent } from './finance-dashboard/finance-dashboard.component';
 import { AuthGuard } from './gaurds/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -9,12 +11,14 @@ import { CommunitySetupComponent } from './system-admin/community-setup/communit
 import { SysAdminHomeComponent } from './system-admin/sys-admin-home/sys-admin-home.component';
 import { SysAdminShellComponent } from './system-admin/sys-admin-shell/sys-admin-shell.component';
 
-const routes: Routes = [  
+const routes: Routes = [
   {path:'',component:HomeComponent, canActivate:[AuthGuard]},
   {path:'home',component:HomeComponent, canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'myprofile',component:MyProfleComponent},
+  {path:'finance-dashboard',component:FinanceDashboardComponent},
+  {path:'community-service',component:CommunityServiceComponent},
   {path:'sysadmin',component:SysAdminShellComponent,
     children:[
       {path:'',component:SysAdminHomeComponent},

@@ -20,8 +20,8 @@ export class CommunityConfigComponent implements OnInit {
     state: new FormControl('',[Validators.required]),
     country : new FormControl('INDIA',[Validators.required]),
     zipcode: new FormControl('',[Validators.required])
-  });  
-  currentCommunity : Community;
+  });
+  currentCommunity : Community | undefined;
   constructor(private communityService: CommunityService, private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class CommunityConfigComponent implements OnInit {
   getCommunityInfo(){
     this.communityService.Get().subscribe({
       next: (r)=>{
-        this.currentCommunity = r;
+        console.log(this.currentCommunity);
         this.setCommunityForm(r);
       },error:(err)=> {
           this.messageService.add({severity:'error',summary:'Unable to fetch community information'});
@@ -38,7 +38,6 @@ export class CommunityConfigComponent implements OnInit {
     });
   }
   setCommunityForm(community:Community){
-    console.log(community);
     this.communityForm.patchValue({
       name: community.Name,
       address1: community.AddressLine1,
@@ -52,7 +51,7 @@ export class CommunityConfigComponent implements OnInit {
 
   save(){
     if(this.communityForm.valid && this.communityForm.touched){
-      if(this.currentCommunity){
+      if(this.currentCommunity!=undefined){
         this.currentCommunity.Name = this.communityForm.controls['name'].value;
         this.currentCommunity.AddressLine1 = this.communityForm.controls['address1'].value;
         this.currentCommunity.AddressLine2 = this.communityForm.controls['address2'].value;
@@ -66,9 +65,30 @@ export class CommunityConfigComponent implements OnInit {
           }
         })
       }
+      else{
+        this.currentCommunity = {
+        Id : 0,
+        Name : this.communityForm.controls['name'].value as string,
+        AddressLine1 : this.communityForm.controls['address1'].value as string,
+        AddressLine2 : this.communityForm.controls['address2'].value as string,
+        City : this.communityForm.controls['city'].value as string,
+        State : this.communityForm.controls['state'].value as string,
+        Country : this.communityForm.controls['country'].value as string,
+        Zipcode : this.communityForm.controls['zipcode'].value as string,
+        CreatedBy:'',
+        ModifiedBy:'',
+        CreatedDateTime: new Date(),
+        ModifiedDateTime: new Date()
+        }
+        this.communityService.insert(this.currentCommunity).subscribe({
+          next:(r)=>{
+            this.messageService.add({severity:'success',summary:'Community information saved successfully.'})
+          }
+        })
+      }
     }
   }
-  cancel(){    
+  cancel(){
     this.getCommunityInfo();
   }
 

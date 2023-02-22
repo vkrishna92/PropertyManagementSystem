@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using PropertyManagementSystem.DTOs;
 using PropertyManagementSystem.Interfaces;
 using PropertyManagementSystem.Models;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PropertyManagementSystem.Controllers
@@ -28,6 +30,19 @@ namespace PropertyManagementSystem.Controllers
         {
             var apartments = await _apartmentRepository.GetAll(paginationParameters);
             return Ok(apartments);
+        }
+        [HttpGet("myUnits")]
+        public async Task<IActionResult> getMyUnits()
+        {
+            PaginationParameters pagination = new PaginationParameters();
+            pagination.PageNumber = 1;
+            pagination.PageSize = 10000;
+            var apartments = await _apartmentRepository.GetAll(pagination);
+            var appUser = User.Identities.First().Claims.FirstOrDefault();
+            if (appUser == null)
+                return Unauthorized();
+            var userApartments = apartments.Where(r => r.AppUserId == appUser.Value).ToList();
+            return Ok(userApartments);
         }
         
         [HttpPost]

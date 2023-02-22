@@ -1,17 +1,22 @@
 <mat-toolbar color="primary" *ngIf="isLoggedIn$ | async" class="sticky-top shadow">
+  <button mat-icon-button (click)="sideMenuClick()">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
     <h1 class="m-1">Resident Portal</h1>
     <span class="spacer"></span>
     <button mat-icon-button class="mr-3">
         <span class="material-symbols-outlined">notifications</span>
-    </button>    
-    
+    </button>
+
     <button mat-button aria-label="Example icon-button with share icon"  [matMenuTriggerFor]="menu">
         <span class="material-symbols-outlined mr-3">account_circle</span>
         {{display_name$ | async}}
-    </button> 
+    </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item>Profile</button>
         <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
 </mat-toolbar>
+<!--
 <app-spinner-overlay class="track" mode="indeterminate" [value]="100" *ngIf="isprocessing"></app-spinner-overlay>
+-->

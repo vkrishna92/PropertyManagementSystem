@@ -35,6 +35,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 //OTHER IMPORTS
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -53,6 +54,9 @@ import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.compo
 import { RegisterComponent } from './register/register.component';
 import { AuthHeaderInterceptor } from './interceptors/auth-header.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FinanceDashboardComponent } from './finance-dashboard/finance-dashboard.component';
+import {CalendarModule} from 'primeng/calendar';
+import { CommunityServiceComponent } from './community-service/community-service.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MyProfleComponent,
     SideMenuComponent,
     SpinnerOverlayComponent,
-    RegisterComponent
+    RegisterComponent,
+    FinanceDashboardComponent,
+    CommunityServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +80,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
 
     //PRIME NG
-    ToastModule,    
+    ToastModule,
     InputTextModule,
     RippleModule,
     ButtonModule,
@@ -85,7 +91,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MenuModule,
     MegaMenuModule,
     TooltipModule,
-    
+
     //MATERIAL
     MatCardModule,
     MatFormFieldModule,
@@ -101,17 +107,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-
+    MatTabsModule,
     //OTHER IMPORTS
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
-    
+
     //CUSTOM MODULES
     SystemAdminModule,
 
+    //PrimeNg
+    CalendarModule,
+
     NgbModule,
-     FontAwesomeModule    
+     FontAwesomeModule
   ],
-  providers: [MessageService, 
+  providers: [MessageService,
   {provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })

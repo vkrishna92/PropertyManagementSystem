@@ -1,11 +1,24 @@
 <mat-nav-list class="sidemenu">
-    <mat-list-item pTooltip="Apps">      
-        <span class="material-symbols-outlined">apps</span>        
+    <mat-list-item pTooltip="Apps">
+        <span class="material-symbols-outlined">apps</span>
     </mat-list-item>
-    <mat-list-item class="mt-2" [routerLink]="['/home']" routerLinkActive="router-link-active" pTooltip="Home">      
-        <span class="material-symbols-outlined">home</span>        
+    <mat-list-item class="mt-2" [routerLink]="['/home']" routerLinkActive="router-link-active" pTooltip="Home">
+      <span class="material-symbols-outlined">home</span>
+      <span class="ml-3">Home</span>
+
     </mat-list-item>
-    <mat-list-item [routerLink]="['/sysadmin']" routerLinkActive="router-link-active" pTooltip="System Administration" >
-        <span class="material-symbols-outlined">admin_panel_settings</span>
+    <mat-list-item [routerLink]="['/sysadmin/communitysetup']" routerLinkActive="router-link-active" pTooltip="Community" >
+      <span class="material-symbols-outlined">hub</span>
+        <span class="ml-3">Community</span>
+    </mat-list-item>
+    <mat-list-item [routerLink]="['/finance-dashboard']" routerLinkActive="router-link-active" pTooltip="Finance" >
+      <span class="material-symbols-outlined">attach_money</span>
+        <span class="ml-3">Finance</span>
+    </mat-list-item>
+    <mat-list-item [routerLink]="['/community-service']" routerLinkActive="router-link-active" pTooltip="Services">
+      <span class="material-symbols-outlined" >
+        home_repair_service
+        </span>
+        <span class="ml-3">Services</span>
     </mat-list-item>
 </mat-nav-list>

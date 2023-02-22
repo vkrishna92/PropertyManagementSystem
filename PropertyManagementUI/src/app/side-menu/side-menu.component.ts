@@ -13,6 +13,5 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
   }
   toggleSideNav(){
-    //this.sideNav.toggle();
   }
 }

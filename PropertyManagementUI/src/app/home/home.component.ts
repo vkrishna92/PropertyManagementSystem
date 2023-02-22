@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Apartment } from '../Models/Apartment';
+import { ApartmentService } from '../Services/apartment.service';
 import { AuthDataService } from '../Services/auth-data.service';
 import { AuthService } from '../Services/auth.service';
 
@@ -10,11 +12,18 @@ import { AuthService } from '../Services/auth.service';
 export class HomeComponent implements OnInit {
 
   display_name='';
-  constructor(private authService: AuthService) { }
+  userApartments : Apartment[] = [];
+  constructor(private authService: AuthService, private apartmentService: ApartmentService) { }
 
   ngOnInit(): void {
     this.display_name = this.authService.getAttributeValue('unique_name');
     console.log(this.display_name);
+    this.apartmentService.getMyUnits().subscribe({
+      next:(r)=>{
+        this.userApartments = r;
+        console.log(r);
+      }
+    })
   }
 
 }

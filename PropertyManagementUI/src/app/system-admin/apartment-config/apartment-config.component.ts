@@ -36,7 +36,7 @@ export class ApartmentConfigComponent implements OnInit {
     areaSqft: new FormControl(0),
     appUserId: new FormControl(''),
     buildingId: new FormControl(0)
-  });   
+  });
   ownerInformationForm = new FormGroup({
     id: new FormControl({value:'',disabled:true}),
     firstName: new FormControl({value:'',disabled:true}),
@@ -45,12 +45,12 @@ export class ApartmentConfigComponent implements OnInit {
     phone: new FormControl({value:'',disabled:true})
   })
 
-  constructor(private buildingService: BuildingService, private apartmentService: ApartmentService, private messageService: MessageService, private auth: AuthService) { 
+  constructor(private buildingService: BuildingService, private apartmentService: ApartmentService, private messageService: MessageService, private auth: AuthService) {
     this.items = [
       { label: 'New', icon: 'pi pi-fw pi-plus', command: (event)=>{this.clickNew();}},
-      { label: 'Save', icon: 'pi pi-fw pi-save', command: (event)=>{this.clickSave()}},      
-      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}}  
-    ]; 
+      { label: 'Save', icon: 'pi pi-fw pi-save', command: (event)=>{this.clickSave()}},
+      { label: 'Delete', icon: 'pi pi-fw pi-trash', command: (event)=>{this.clickDelete()}}
+    ];
   }
 
   ngOnInit(): void {
@@ -63,7 +63,7 @@ export class ApartmentConfigComponent implements OnInit {
   getBuildings(){
     this.buildingService.get(this.pagination).subscribe({
       next:(r)=>{
-        this.buildings = r;                      
+        this.buildings = r;
       }
     })
   }
@@ -71,7 +71,7 @@ export class ApartmentConfigComponent implements OnInit {
     this.apartmentService.getAll(this.pagination).subscribe({
       next:(value)=> {
           this.apartments = value;
-          if(this.apartments.length>0){            
+          if(this.apartments.length>0){
             this.setApartmentForm(this.apartments[0])
             let owner = this.apartments[0].Owner;
             this.setOwnerForm(owner);
@@ -86,20 +86,20 @@ export class ApartmentConfigComponent implements OnInit {
     this.floors.push("Floor G");
     this.floors.push("Parking 1");
     this.floors.push("Parking 2");
-    for (let index = 1; index < 30; index++) {      
+    for (let index = 1; index < 30; index++) {
       this.floors.push("Floor "+index);
-    }    
-  } 
+    }
+  }
 
   //TOOLBAR ACTIONS
   clickNew(){
-    this.apartmentForm.reset();    
+    this.apartmentForm.reset();
     this.ownerInformationForm.reset();
     this.apartmentForm.patchValue({
       id:0,
       apartmentNum:'',
       areaSqft:0,
-      floor: this.floors[0],    
+      floor: this.floors[0],
     });
   }
   clickSave(){
@@ -116,18 +116,18 @@ export class ApartmentConfigComponent implements OnInit {
       CreatedBy: null,
       CreatedDateTime: new Date(),
       ModifiedBy: null,
-      ModifiedDateTime: new Date()         
+      ModifiedDateTime: new Date()
     }
     console.log(apartment);
     if(apartment.Id == 0){
       this.apartmentService.post(apartment).subscribe({
         next:(value)=> {
             this.messageService.add({severity:'success',summary:'Apartment information saved.'})
-            this.clickNew();            
+            this.clickNew();
             this.ngOnInit();
         },
         error:(err)=> {
-          this.messageService.add({severity:'error',summary:'Unable to save Apartment information.'})  
+          this.messageService.add({severity:'error',summary:'Unable to save Apartment information.'})
         },
       });
     }
@@ -138,10 +138,10 @@ export class ApartmentConfigComponent implements OnInit {
           this.ngOnInit();
         },
         error:(err)=> {
-          this.messageService.add({severity:'error',summary:'Unable to update Apartment information.'})  
+          this.messageService.add({severity:'error',summary:'Unable to update Apartment information.'})
         },
       });
-    }    
+    }
   }
   clickDelete(){
     let apartmentId: number = this.apartmentForm.controls['id'].value as number;
@@ -150,11 +150,11 @@ export class ApartmentConfigComponent implements OnInit {
         next:(value)=> {
           this.messageService.add({severity:'success',summary:'Apartment information deleted.'})
           this.apartmentForm.reset();
-          this.ownerInformationForm.reset();          
+          this.ownerInformationForm.reset();
           this.ngOnInit();
         },
         error:(err)=> {
-          this.messageService.add({severity:'error',summary:'Unable to deleted Apartment information.'})  
+          this.messageService.add({severity:'error',summary:'Unable to deleted Apartment information.'})
         },
       });
     }
@@ -162,20 +162,21 @@ export class ApartmentConfigComponent implements OnInit {
   }
   selectApartment(){
     this.setApartmentForm(this.selectedApartment);
+
     this.setOwnerForm(this.selectedApartment.Owner);
   }
 
   getUserByEmail(email:string){
     this.auth.getUserByEmail(email).subscribe({
       next:(value)=> {
-          console.log(value);   
-          this.setOwnerForm(value)     
+          console.log(value);
+          this.setOwnerForm(value)
       },
     })
   }
   setApartmentForm(apartment:Apartment){
     console.log(apartment);
-    if(apartment!= null){     
+    if(apartment!= null){
       this.apartmentForm.patchValue({
         id: apartment.Id,
         apartmentNum: apartment.ApartmentNum,
@@ -183,8 +184,8 @@ export class ApartmentConfigComponent implements OnInit {
         buildingId:apartment.BuildingId,
         floor: apartment.Floor,
         appUserId: apartment.AppUserId,
-      });      
-    }    
+      });
+    }
   }
   setOwnerForm(owner: AppUserDto){
     console.log(owner);
@@ -197,8 +198,11 @@ export class ApartmentConfigComponent implements OnInit {
         phone: owner.PhoneNumber
       });
     }
+    else{
+      this.ownerInformationForm.reset();
+    }
   }
-  onRemoveOwner(){   
+  onRemoveOwner(){
   }
 
 }

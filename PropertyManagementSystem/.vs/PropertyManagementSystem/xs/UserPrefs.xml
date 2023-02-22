@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{FE65A58C-9934-4F47-BF8D-35E370833B9D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PropertyManagementSystem/Startup.cs">
+    <Files>
+      <File FileName="PropertyManagementSystem/Startup.cs" Line="38" Column="59" />
+      <File FileName="PropertyManagementSystem/WeatherForecast.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PropertyManagementSystem" expanded="True">
+            <Node name="PropertyManagementSystem" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.PropertyManagementSystem PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
