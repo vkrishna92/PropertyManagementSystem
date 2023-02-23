@@ -37,6 +37,7 @@ namespace PropertyManagementSystem.Repository
             var apartments = await _dataContext.Apartments
                                     .Include(b => b.Building)
                                     .Include(a=> a.Owner)
+                                    .Include(t => t.Tenant)
                                     .Skip((paginationParameters.PageNumber-1) * paginationParameters.PageSize)
                                     .Take(paginationParameters.PageSize).ToListAsync();
             return apartments;
@@ -86,6 +87,7 @@ namespace PropertyManagementSystem.Repository
             var apartment = _dataContext.Apartments.FirstOrDefault(a => a.Id == obj.Id);
             var building = _dataContext.Buildings.FirstOrDefault(b => b.Id == obj.BuildingId);
             var appUser = _dataContext.AppUsers.FirstOrDefault(a => a.Id == obj.AppUserId);
+            var tenant = _dataContext.AppUsers.FirstOrDefault(a => a.Id == obj.tenantId);
             if (apartment == null || building == null)
                 throw new Exception("Cannot update in Apartment table.Apartment or Building is null.");
 
@@ -100,6 +102,17 @@ namespace PropertyManagementSystem.Repository
             {
                 apartment.AppUserId = appUser.Id;
                 apartment.Owner = appUser;
+            }
+
+            if(tenant == null)
+            {
+                apartment.tenantId = null;
+                apartment.Tenant = null;
+            }
+            else
+            {
+                apartment.tenantId = tenant.Id;
+                apartment.Tenant = tenant;
             }
            
             apartment.BuildingId = obj.BuildingId;

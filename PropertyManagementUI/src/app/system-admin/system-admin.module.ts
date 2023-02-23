@@ -39,6 +39,7 @@ import {AvatarModule} from 'primeng/avatar';
 import { ChipModule } from 'primeng/chip';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {DividerModule} from 'primeng/divider';
+import {DialogModule} from 'primeng/dialog';
 
 //OTHER IMPORTS
 //import { NgxSpinnerModule } from "ngx-spinner";
@@ -60,17 +61,17 @@ import { ApartmentConfigComponent } from './apartment-config/apartment-config.co
     BuildingConfigComponent,
     UnitConfigComponent,
     CommunityConfigComponent,
-    ApartmentConfigComponent,      
+    ApartmentConfigComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule,  
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
 
     //FONTAWSOME
     FontAwesomeModule,
-    
+
     //PRIME NG
     MegaMenuModule,
     MenubarModule,
@@ -89,7 +90,8 @@ import { ApartmentConfigComponent } from './apartment-config/apartment-config.co
     AvatarGroupModule,
     ChipModule,
     DividerModule,
-    
+    DialogModule,
+
     //OTHER IMPORTS
     //NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
 
@@ -106,7 +108,7 @@ import { ApartmentConfigComponent } from './apartment-config/apartment-config.co
     MatSlideToggleModule,
     MatCheckboxModule
 
-    //INTERNAL MODULES 
+    //INTERNAL MODULES
   ]
   //schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

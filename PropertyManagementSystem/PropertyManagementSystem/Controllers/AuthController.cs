@@ -38,7 +38,7 @@ namespace PropertyManagementSystem.Controllers
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
                 DisplayName = string.Format("{0},{1}", userDto.FirstName, userDto.LastName),
-                PhoneNumber = userDto.Phone,
+                PhoneNumber = userDto.PhoneNumber,
                 Email = userDto.Email,                
                 UserName = username               
             };
@@ -85,7 +85,7 @@ namespace PropertyManagementSystem.Controllers
             appUserDto.UserName = user.UserName;
             appUserDto.FirstName = user.FirstName;
             appUserDto.LastName = user.LastName;
-            appUserDto.Phone = user.PhoneNumber;            
+            appUserDto.PhoneNumber = user.PhoneNumber;            
             return Ok(user);
         }
 
@@ -101,8 +101,8 @@ namespace PropertyManagementSystem.Controllers
             appUserDto.UserName = user.UserName;
             appUserDto.FirstName = user.FirstName;
             appUserDto.LastName = user.LastName;
-            appUserDto.Phone = user.PhoneNumber;
-            return Ok(user);
+            appUserDto.PhoneNumber = user.PhoneNumber;
+            return Ok(appUserDto);
         }
 
     }

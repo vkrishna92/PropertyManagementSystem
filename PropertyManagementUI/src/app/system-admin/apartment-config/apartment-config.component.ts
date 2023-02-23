@@ -25,9 +25,14 @@ export class ApartmentConfigComponent implements OnInit {
   selectedApartment: Apartment;
   buildings: Building[];
   floors:string[]=[];
+  dialogUserType = "";
+  dialogAppUser: AppUserDto;
 
   //Pagination Params
   pagination : PaginationParameters = {PageNumber:1, PageSize: 20};
+
+  //boolean
+  displayDialog = false;
 
   //FORM
   apartmentForm = new FormGroup({
@@ -44,7 +49,21 @@ export class ApartmentConfigComponent implements OnInit {
     lastName: new FormControl({value:'',disabled:true}),
     email: new FormControl({value:'',disabled:true}),
     phone: new FormControl({value:'',disabled:true})
-  })
+  });
+  tenantInformationForm = new FormGroup({
+    id: new FormControl({value:'',disabled:true}),
+    firstName: new FormControl({value:'',disabled:true}),
+    lastName: new FormControl({value:'',disabled:true}),
+    email: new FormControl({value:'',disabled:true}),
+    phone: new FormControl({value:'',disabled:true})
+  });
+  appUserInformationForm = new FormGroup({
+    id: new FormControl({value:'',disabled:true}),
+    firstName: new FormControl({value:'',disabled:true}),
+    lastName: new FormControl({value:'',disabled:true}),
+    email: new FormControl({value:'',disabled:true}),
+    phone: new FormControl({value:'',disabled:true})
+  });
 
   constructor(private buildingService: BuildingService, private apartmentService: ApartmentService,
     private messageService: MessageService, private auth: AuthService, private router: Router) {
@@ -77,7 +96,9 @@ export class ApartmentConfigComponent implements OnInit {
           if(this.apartments.length>0){
             this.setApartmentForm(this.apartments[0])
             let owner = this.apartments[0].Owner;
+            let tenant = this.apartments[0].Tenant;
             this.setOwnerForm(owner);
+            this.setTenantForm(tenant);
           }
       },
       error: (err)=> {
@@ -113,7 +134,9 @@ export class ApartmentConfigComponent implements OnInit {
       BuildingId: this.apartmentForm.controls['buildingId'].value,
       AreaSqft:  this.apartmentForm.controls['areaSqft'].value,
       AppUserId: this.ownerInformationForm.controls["id"].value,
+      TenantId: this.tenantInformationForm.controls["id"].value,
       Owner: null,
+      Tenant: null,
       Building: null,
       CreatedBy: null,
       CreatedDateTime: new Date(),
@@ -165,12 +188,29 @@ export class ApartmentConfigComponent implements OnInit {
     this.setApartmentForm(this.selectedApartment);
 
     this.setOwnerForm(this.selectedApartment.Owner);
+    this.setTenantForm(this.selectedApartment.Tenant);
   }
-
+  getTenantByEmail(email:string){
+    this.auth.getUserByEmail(email).subscribe({
+      next:(value)=> {
+          console.log(value);
+          this.setTenantForm(value)
+      },
+    })
+  }
   getUserByEmail(email:string){
     this.auth.getUserByEmail(email).subscribe({
       next:(value)=> {
+          console.log(value);
           this.setOwnerForm(value)
+      },
+    })
+  }
+  getAppUserByEmail(email:string){
+    this.auth.getUserByEmail(email).subscribe({
+      next:(value)=> {
+          this.dialogAppUser = value;
+          this.setAppUserForm(value);
       },
     })
   }
@@ -186,7 +226,37 @@ export class ApartmentConfigComponent implements OnInit {
       });
     }
   }
+  setTenantForm(tenant:AppUserDto){
+    if(tenant!=null){
+      this.tenantInformationForm.patchValue({
+        id: tenant.Id,
+        firstName: tenant.FirstName,
+        lastName: tenant.LastName,
+        email: tenant.Email,
+        phone: tenant.PhoneNumber
+      });
+    }
+    else{
+      this.tenantInformationForm.reset();
+    }
+  }
+  setAppUserForm(appUser: AppUserDto){
+    console.log(appUser);
+    if(appUser!=null){
+      this.appUserInformationForm.patchValue({
+        id: appUser.Id,
+        firstName: appUser.FirstName,
+        lastName: appUser.LastName,
+        email: appUser.Email,
+        phone: appUser.PhoneNumber
+      });
+    }
+    else{
+      this.appUserInformationForm.reset();
+    }
+  }
   setOwnerForm(owner: AppUserDto){
+    console.log(owner);
     if(owner!=null){
       this.ownerInformationForm.patchValue({
         id: owner.Id,
@@ -203,5 +273,32 @@ export class ApartmentConfigComponent implements OnInit {
   clickPaymentPeriods(){
     this.router.navigate(['/payment-periods']);
   }
+  clickFindOwner(){
 
+  }
+
+  //Dialog Methods
+  openFindUserDialog(userType:string){
+    this.dialogUserType = userType;
+    this.displayDialog = true;
+  }
+  saveFindUserDialog(){
+    if(this.dialogAppUser!= undefined){
+      if(this.dialogUserType == 'owner'){
+        this.setOwnerForm(this.dialogAppUser);
+        this.displayDialog = false;
+      }
+      else if(this.dialogUserType == 'tenant'){
+        this.setTenantForm(this.dialogAppUser);
+        this.displayDialog = false;
+      }
+    }
+    else{
+      this.displayDialog = false;
+    }
+
+  }
+  hideOwnerDialog(){
+    console.log("hidden dialog")
+  }
 }

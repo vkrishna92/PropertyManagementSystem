@@ -47,18 +47,13 @@
             <p-divider></p-divider>
             <form [formGroup]="ownerInformationForm">
                 <div class="row">
-                    <b class="m-2">Owner Information</b>
+                    <b class="m-2 col-10">Owner Information</b>
+                    <button pButton pRipple type="button" icon="pi pi-user-plus" pTooltip="Add user" class="col-1 p-button-rounded p-button-text" (click)="openFindUserDialog('owner')"></button>
+                    <button pButton pRipple type="button" icon="pi pi-user-minus" pTooltip="Remove user" class="col-1 p-button-rounded p-button-danger p-button-text"></button>
                 </div>
                 <div class="row">
                 </div>
                 <div class="row">
-                    <div class="field m-2">
-                        <span class="p-input-icon-right">
-                            <input type="text" pInputText  placeholder="Search email" #email class="w-100" (input)="getUserByEmail(email.value)"/>
-                            <i class="pi pi-search"></i>
-                        </span>
-                    </div>
-
                     <div class="col">
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">First name</small>
@@ -83,19 +78,15 @@
                 </div>
             </form>
             <p-divider></p-divider>
-            <form>
+            <form [formGroup]="tenantInformationForm">
               <div class="row">
-                <b class="m-2">Tenant Information</b>
-                <div class="row">
-                </div>
-                <div class="row">
-                    <div class="field m-2">
-                        <span class="p-input-icon-right">
-                            <input type="text" pInputText  placeholder="Search email" #email class="w-100" (input)="getUserByEmail(email.value)"/>
-                            <i class="pi pi-search"></i>
-                        </span>
-                    </div>
+                <b class="col-10 m-2">Tenant Information</b>
+                <button pButton pRipple type="button" icon="pi pi-user-plus" pTooltip="Add user" class="col-1 p-button-rounded p-button-text" (click)="openFindUserDialog('tenant')"></button>
+                <button pButton pRipple type="button" icon="pi pi-user-minus" pTooltip="Remove user" class="col-1 p-button-rounded p-button-danger p-button-text"></button>
 
+              </div>
+
+                <div class="row">
                     <div class="col">
                         <div class="field m-2">
                             <small class="pl-2 text-secondary">First name</small>
@@ -118,8 +109,48 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
+    <p-dialog header="Find User" [(visible)]="displayDialog" [modal]="true" [draggable]="false" [resizable]="false" [style]="{width: '50vw'}"
+    >
+    <form [formGroup]="appUserInformationForm">
+      <div class="row">
+      </div>
+      <div class="row">
+          <div class="field m-2">
+
+              <span class="p-input-icon-right">
+                  <input type="text" pInputText  placeholder="Search email" #appUserEmail class="w-100" (input)="getAppUserByEmail(appUserEmail.value)"/>
+                  <i class="pi pi-search"></i>
+              </span>
+          </div>
+
+          <div class="col">
+              <div class="field m-2">
+                  <small class="pl-2 text-secondary">First name</small>
+                  <input type="text" class="p-inputtext-sm" class="w-100" formControlName="firstName" pInputText />
+              </div>
+              <div class="field m-2">
+                  <small class="pl-2 text-secondary">Phone number</small>
+                  <input type="text" class="p-inputtext-sm"  class="w-100" formControlName="phone" pInputText />
+              </div>
+
+          </div>
+          <div class="col">
+              <div class="field m-2">
+                  <small class="pl-2 text-secondary">Last name</small>
+                  <input type="text" class="p-inputtext-sm" class="w-100" formControlName="lastName" pInputText />
+              </div>
+              <div class="field m-2">
+                  <small class="pl-2 text-secondary">Email address</small>
+                  <input type="email" class="p-inputtext-sm" class="w-100" pInputText formControlName="email" />
+              </div>
+          </div>
+      </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" label="Ok" styleClass="p-button-text" (click)="saveFindUserDialog()"></p-button>
+    </ng-template>
+  </p-dialog>
 </div>
