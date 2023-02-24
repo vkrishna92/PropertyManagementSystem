@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Apartment } from '../Models/Apartment';
+import { MaintenanceAgreement } from '../Models/MaintenanceAgreement';
 import { PaginationParameters } from '../Models/PaginationParameters';
 
 @Injectable({
@@ -11,6 +12,8 @@ export class ApartmentService {
 
   baseUrl = environment.baseUrl+"Apartment/";
   constructor(private http: HttpClient) { }
+
+  //Apartment APIs
   getAll(paginationParam: PaginationParameters){
     const params = new HttpParams()
     .set('PageNumber',paginationParam.PageNumber)
@@ -32,6 +35,14 @@ export class ApartmentService {
   }
   getMyUnits(){
     return this.http.get<Apartment[]>(this.baseUrl+"myUnits");
+  }
+
+  //Maintenance Agreement APIs
+  postMaintenanceAgreement(maintenanceAgreement: MaintenanceAgreement){
+    return this.http.post<MaintenanceAgreement>(this.baseUrl+"maintenance-agreement", maintenanceAgreement);
+  }
+  getMaintenanceAgreementByApartmentId(id: number){
+    return this.http.get<MaintenanceAgreement>(this.baseUrl+"maintenance-agreement-apartmentId/"+id);
   }
 
 }

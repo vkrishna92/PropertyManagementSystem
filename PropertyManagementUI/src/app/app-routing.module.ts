@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'myprofile',component:MyProfleComponent},
   {path:'finance-dashboard',component:FinanceDashboardComponent},
   {path:'community-service',component:CommunityServiceComponent},
-  {path:'payment-periods',component:UnitPaymentPeriodComponent},
+  {path:'payment-periods/:id',component:UnitPaymentPeriodComponent},
   {path:'sysadmin',component:SysAdminShellComponent,
     children:[
       {path:'',component:SysAdminHomeComponent},

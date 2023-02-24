@@ -8,7 +8,7 @@ namespace PropertyManagementSystem.Interfaces
     public interface IApartmentRepository
     {
         Task<List<Apartment>> GetAll(PaginationParameters paginationParameters);
-        Task<Apartment> GetById(long id);
+        Task<Apartment> GetById(long id);        
         void Insert(Apartment obj);
         void Update(Apartment obj);
         void Delete(long id);

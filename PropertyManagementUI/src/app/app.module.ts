@@ -20,6 +20,8 @@ import {MenuItem} from 'primeng/api';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {TooltipModule} from 'primeng/tooltip';
 import {PanelModule} from 'primeng/panel';
+import {MenubarModule} from 'primeng/menubar';
+import {DialogModule} from 'primeng/dialog';
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -96,6 +98,7 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     MenuModule,
     MegaMenuModule,
     TooltipModule,
+    DialogModule,
 
     //MATERIAL
     MatCardModule,
@@ -123,6 +126,7 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     //PrimeNg
     CalendarModule,
     PanelModule,
+    MenubarModule,
 
     NgbModule,
      FontAwesomeModule

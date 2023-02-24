@@ -14,10 +14,11 @@ namespace PropertyManagementSystem.Controllers
     public class ApartmentController : ControllerBase
     {
         private readonly IApartmentRepository _apartmentRepository;
-
-        public ApartmentController(IApartmentRepository apartmentRepository)
+        private readonly IMaintenanceRepository _maintenanceRepository;
+        public ApartmentController(IApartmentRepository apartmentRepository, IMaintenanceRepository maintenanceRepository)
         {
             _apartmentRepository = apartmentRepository;
+            _maintenanceRepository = maintenanceRepository;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
@@ -28,7 +29,7 @@ namespace PropertyManagementSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] PaginationParameters paginationParameters)
         {
-            var apartments = await _apartmentRepository.GetAll(paginationParameters);
+                var apartments = await _apartmentRepository.GetAll(paginationParameters);
             return Ok(apartments);
         }
         [HttpGet("myUnits")]
@@ -52,6 +53,8 @@ namespace PropertyManagementSystem.Controllers
             await _apartmentRepository.Save();
             return Ok(apartment);
         }
+
+        
         [HttpPut]
         public async Task<IActionResult> Update(Apartment apartment)
         {
@@ -65,6 +68,22 @@ namespace PropertyManagementSystem.Controllers
             _apartmentRepository.Delete(id);
             await _apartmentRepository.Save();
             return Ok();
+        }
+
+        //Maintenance Agreement Methods
+        [HttpGet("maintenance-agreement-apartmentId/{id}")]
+        public async Task<IActionResult> GetMaintenanceAgreementByApartmentId(long id)
+        {
+            var agreements = await _maintenanceRepository.GetAll(new PaginationParameters() { PageNumber = 1, PageSize = 10000 });
+            var agreement =  agreements.Where(a => a.ApartmentId == id).FirstOrDefault();            
+            return Ok(agreement);
+        }
+        [HttpPost("maintenance-agreement")]
+        public async Task<IActionResult> CreateMaintenanceAgreement(MaintenanceAgreement maintenanceAgreement)
+        {
+            _maintenanceRepository.Insert(maintenanceAgreement);
+            await _maintenanceRepository.Save();
+            return Ok(maintenanceAgreement);
         }
     }
 }

@@ -185,6 +185,7 @@ export class ApartmentConfigComponent implements OnInit {
 
   }
   selectApartment(){
+    console.log(this.selectedApartment)
     this.setApartmentForm(this.selectedApartment);
 
     this.setOwnerForm(this.selectedApartment.Owner);
@@ -256,7 +257,6 @@ export class ApartmentConfigComponent implements OnInit {
     }
   }
   setOwnerForm(owner: AppUserDto){
-    console.log(owner);
     if(owner!=null){
       this.ownerInformationForm.patchValue({
         id: owner.Id,
@@ -271,7 +271,7 @@ export class ApartmentConfigComponent implements OnInit {
     }
   }
   clickPaymentPeriods(){
-    this.router.navigate(['/payment-periods']);
+    this.router.navigate(['/payment-periods', this.selectedApartment.Id]);
   }
   clickFindOwner(){
 
