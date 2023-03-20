@@ -37,7 +37,7 @@ namespace PropertyManagementSystem.Repository
         {
             var agreement = await _dataContext.MaintenanceAgreements
                             .Include(m => m.AppUser)
-                            .Include(a => a.Apartment)
+                            .Include(a => a.Apartment)                            
                             .FirstOrDefaultAsync(a => a.Id == id);
 
             return agreement;
@@ -78,12 +78,13 @@ namespace PropertyManagementSystem.Repository
                 throw new Exception("Cannot update MaintenanceAgreement. User is null.");
 
             agreement.AppUserId = obj.AppUserId;
-            agreement.AppUser = obj.AppUser;
+            agreement.AppUser = appUser;
             agreement.ApartmentId = obj.ApartmentId;
             agreement.Apartment = apartment;
             agreement.FromDate = obj.FromDate;
             agreement.ToDate = obj.ToDate;
             agreement.MaintenanceAmount = obj.MaintenanceAmount;
+            agreement.IsDisabled = obj.IsDisabled;
             _dataContext.Update(agreement);
         }
     }

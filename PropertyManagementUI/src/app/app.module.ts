@@ -22,6 +22,15 @@ import {TooltipModule} from 'primeng/tooltip';
 import {PanelModule} from 'primeng/panel';
 import {MenubarModule} from 'primeng/menubar';
 import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {TabViewModule} from 'primeng/tabview';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import { TableModule } from "primeng/table";
+import { ChipModule } from 'primeng/chip';
+import {CarouselModule} from 'primeng/carousel';
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -39,6 +48,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatRippleModule} from '@angular/material/core';
 
 //OTHER IMPORTS
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -63,6 +73,7 @@ import { FinanceDashboardComponent } from './finance-dashboard/finance-dashboard
 import {CalendarModule} from 'primeng/calendar';
 import { CommunityServiceComponent } from './community-service/community-service.component';
 import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-period.component';
+import { MaintenanceAgreementComponent } from './maintenance-agreement/maintenance-agreement.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +88,7 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     FinanceDashboardComponent,
     CommunityServiceComponent,
     UnitPaymentPeriodComponent,
+    MaintenanceAgreementComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +111,15 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     MegaMenuModule,
     TooltipModule,
     DialogModule,
+    DropdownModule,
+    TabMenuModule,
+    TableModule,
+    TabViewModule,
+    ConfirmDialogModule,
+    InputSwitchModule,
+    ChipModule,
+    CarouselModule,
+
 
     //MATERIAL
     MatCardModule,
@@ -116,6 +137,8 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatTabsModule,
+    MatRippleModule,
+
     //OTHER IMPORTS
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     AgGridModule,
@@ -129,9 +152,9 @@ import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-p
     MenubarModule,
 
     NgbModule,
-     FontAwesomeModule
+    FontAwesomeModule
   ],
-  providers: [MessageService,
+  providers: [MessageService,ConfirmationService,
   {provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })

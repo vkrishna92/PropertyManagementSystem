@@ -1,7 +1,12 @@
 .unit-card{
-  max-width: 100%;
   margin: 5px;
+  align-items: center;
+}
+p-card{
+  cursor: pointer;
+
 }
 .full-btn{
   width: 100%;
 }
+

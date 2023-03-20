@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ColDef } from 'ag-grid-community';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MenuItem, MessageService } from 'primeng/api';
 import { MaintenanceAgreement } from '../Models/MaintenanceAgreement';
 import { MaintenanceSchedule } from '../Models/MaintenanceSchedule';
 import { ApartmentService } from '../Services/apartment.service';
@@ -16,18 +17,19 @@ export class UnitPaymentPeriodComponent implements OnInit {
   items: MenuItem[];
   maintenanceScheduleList:  MaintenanceSchedule[];
   maintenanceAgreement: MaintenanceAgreement;
-  displayModal = false;
+  selectedPeriod: MaintenanceSchedule;
+
   apartmentId = 0;
   public columnDefs: ColDef[] = [
-    { field: 'periodStart'},
-    { field: 'periodEnd'},
-    { field: 'amount' },
-    {field:'dueDate'},
-    {field:'status'},
-    {field:'transactionDate'}
+    { field: 'PeriodStartDate'},
+    { field: 'PeriodEndDate'},
+    { field: 'MaintenanceAmount' },
+    {field:'TransDate'},
+    {field:'Status'}
   ];
 
-  constructor(private route:ActivatedRoute,private apartmentService:ApartmentService) {
+  constructor(private route:ActivatedRoute,private apartmentService:ApartmentService,
+    private confirmationService: ConfirmationService, private messageService: MessageService) {
 
    }
 
@@ -36,6 +38,13 @@ export class UnitPaymentPeriodComponent implements OnInit {
     this.apartmentService.getMaintenanceAgreementByApartmentId(this.apartmentId).subscribe({
       next:(resp)=>{
         this.maintenanceAgreement = resp;
+        if(this.maintenanceAgreement.Id != 0){
+          this.apartmentService.getMaintenanceSchedulesByAgreementId(this.maintenanceAgreement.Id).subscribe({
+            next:(resp)=>{
+              this.maintenanceScheduleList = resp;
+            }
+          })
+        }
       }
     })
     this.items = [
@@ -46,13 +55,10 @@ export class UnitPaymentPeriodComponent implements OnInit {
         label: 'Save', icon: 'pi pi-fw pi-save',
       },
       {
-        label: 'Edit', icon: 'pi pi-fw pi-pencil',
+        label: 'Edit', icon: 'pi pi-fw pi-pencil', command: (e)=> this.clickEdit()
       },
       {
         label: 'Delete', icon: 'pi pi-fw pi-trash',
-      },
-      {
-        label:'Agreement', icon:'pi pi-fw pi-file', command:(e)=>this.displayModal = !this.displayModal
       }
     ]
   }
@@ -61,5 +67,10 @@ export class UnitPaymentPeriodComponent implements OnInit {
   clickNew(){
     console.log("Click new");
   }
+  clickEdit(){
+    console.log(this.selectedPeriod);
+  }
+
+
 
 }

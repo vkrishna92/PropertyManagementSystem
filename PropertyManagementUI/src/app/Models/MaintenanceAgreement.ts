@@ -4,10 +4,11 @@ import { BaseModel } from "./BaseModel";
 
 export interface MaintenanceAgreement extends BaseModel{
   AppUserId:string,
-  AppUser: AppUserDto,
+  AppUser: AppUserDto | null,
   ApartmentId: number,
-  Apartment: Apartment,
+  Apartment: Apartment | null,
   FromDate:Date,
   ToDate: Date,
-  MaintenanceAmount:number
+  MaintenanceAmount:number,
+  IsDisabled: boolean
 }

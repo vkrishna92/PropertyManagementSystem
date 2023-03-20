@@ -1,0 +1,69 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<form [formGroup]="maintenanceAgreementForm">
+  <div class="row">
+    <div class="col">
+      <div class="field m-2">
+        <small class="pl-2 block text-secondary">Unit</small>
+        <input type="text" id="inputtext" class="p-inputtext-sm" class="w-100" pInputText formControlName="unit" />
+      </div>
+    </div>
+    <div class="col"></div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="field m-2" >
+        <label class="pl-2 block text-secondary">From Date</label>
+        <p>
+          <p-calendar [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" inputId="basic" formControlName="fromDate"></p-calendar>
+        </p>
+      </div>
+
+    </div>
+    <div class="col">
+      <div class="field m-2">
+        <small class="pl-2 block text-secondary">To Date</small>
+        <p>
+          <p-calendar inputId="basic"  [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" inputId="basic" formControlName="toDate"></p-calendar>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="field m-2">
+        <small class="pl-2 block text-secondary">Payee</small>
+        <p>
+          <p-dropdown [options]="users" [style]="{'minWidth':'100%'}" optionLabel="FirstName" optionValue="Id" formControlName="appUserId"></p-dropdown>
+        </p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field m-2">
+        <small class="pl-2 block text-secondary">Amount</small>
+        <input type="number" id="inputtext" class="p-inputtext-sm" class="w-100" pInputText formControlName="amount"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="p-field-checkbox m-2">
+        <small class="block text-secondary">End Agreement</small>
+        <p class="mt-2">
+          <p-inputSwitch  formControlName="endAgreement"></p-inputSwitch>
+        </p>
+      </div>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button pButton pRipple type="button" label="CANCEL" class="p-button-outlined p-button-danger m-2"
+      styleClass="p-button-sm"></button>
+    <button pButton pRipple type="button" class="m-2" label="SAVE" styleClass="p-button-sm"
+      (click)="clickAgreementSave()"></button>
+  </div>
+</form>

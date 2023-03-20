@@ -14,5 +14,6 @@ namespace PropertyManagementSystem.Models
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }        
         public float MaintenanceAmount { get; set; }
+        public bool IsDisabled { get; set; }
     }
 }

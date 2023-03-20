@@ -1,40 +1,48 @@
 ﻿<Properties StartupConfiguration="{FE65A58C-9934-4F47-BF8D-35E370833B9D}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.PropertyManagementSystem PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="PropertyManagementSystem/Controllers/ApartmentController.cs">
     <Files>
-      <File FileName="PropertyManagementSystem/Startup.cs" Line="39" Column="58" />
-      <File FileName="PropertyManagementSystem/WeatherForecast.cs" />
-      <File FileName="PropertyManagementSystem/Program.cs" />
-      <File FileName="PropertyManagementSystem/appsettings.Development.json" Line="10" Column="60" />
-      <File FileName="PropertyManagementSystem/Migrations/DataContextModelSnapshot.cs" Line="1" Column="1" />
-      <File FileName="PropertyManagementSystem/Migrations/20230221004935_InitialCommitMac.cs" Line="1" Column="1" />
-      <File FileName="PropertyManagementSystem/Controllers/AuthController.cs" Line="51" Column="30" />
-      <File FileName="PropertyManagementSystem/Controllers/CommunityController.cs" Line="1" Column="1" />
-      <File FileName="PropertyManagementSystem/Controllers/ApartmentController.cs" Line="46" Column="10" />
-      <File FileName="PropertyManagementSystem/Interfaces/IApartmentRepository.cs" Line="1" Column="1" />
-      <File FileName="PropertyManagementSystem/Controllers/BaseController.cs" Line="1" Column="1" />
+      <File FileName="PropertyManagementSystem/Controllers/ApartmentController.cs" Line="158" Column="85" IsPinned="True" />
+      <File FileName="PropertyManagementSystem/Models/MaintenanceSchedule.cs" Line="13" Column="71" IsPinned="True" />
+      <File FileName="PropertyManagementSystem/Repository/MaintenanceScheduleRepository.cs" Line="71" Column="30" IsPinned="True" />
+      <File FileName="PropertyManagementSystem/Interfaces/IMaintenanceScheduleRepository.cs" Line="14" Column="76" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PropertyManagementSystem" expanded="True">
             <Node name="PropertyManagementSystem" expanded="True">
-              <Node name="Dependencies" expanded="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
+              <Node name="DTOs" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Repository" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="PropertyManagementSystem" expanded="True" selected="True" />
+        </State>
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.PropertyManagementSystem PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Controllers/AuthController.cs" relfile="PropertyManagementSystem/Controllers/AuthController.cs" line="31" column="1" />
+      <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Controllers/ApartmentController.cs" relfile="PropertyManagementSystem/Controllers/ApartmentController.cs" line="121" column="1" />
+      <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Controllers/ApartmentController.cs" relfile="PropertyManagementSystem/Controllers/ApartmentController.cs" line="125" column="1" />
+      <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Repository/MaintenanceScheduleRepository.cs" relfile="PropertyManagementSystem/Repository/MaintenanceScheduleRepository.cs" line="29" column="1" />
+      <Breakpoint file="/Users/vgattupalli/Documents/PropertyManagementSystem/PropertyManagementSystem/PropertyManagementSystem/Repository/MaintenanceScheduleRepository.cs" relfile="PropertyManagementSystem/Repository/MaintenanceScheduleRepository.cs" line="50" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
 </Properties>
