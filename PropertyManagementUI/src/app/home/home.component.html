@@ -25,14 +25,70 @@
           </div>
           <div class="col">
             <div class="row">
-              <p-card pRipple class="col pb-1 text-center">
-                <span class="d-block material-symbols-outlined">person</span>
-                <span class="d-block">Owner</span>
-              </p-card>
-              <p-card pRipple class="col pb-1 text-center">
-                <span class="d-block material-symbols-outlined">group</span>
-                <span class="d-block">Tenant</span>
-              </p-card>
+              <div class="col">
+                <p-card pRipple class="pb-1 text-center" (click)="op.toggle($event)">
+                  <span class="d-block material-symbols-outlined">person</span>
+                  <span class="d-block">Owner</span>
+                </p-card>
+                <p-overlayPanel #op  [dismissable]="true" [showCloseIcon]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
+                  <ng-template pTemplate>
+                    <div class="contact-card">
+                      <div class="row">
+                        <div class="col-2">
+                          <p-avatar [label]="a.Owner.DisplayName[0]"></p-avatar>
+                        </div>
+                        <div class="col">
+                          <span class="d-block fw-semibold">{{a.Owner.DisplayName}}</span>
+                          <span class="d-block text-secondary">{{a.Owner.Email}}</span>
+                        </div>
+                      </div>
+                      <p></p>
+                      <div class="row">
+                        <div class="col-2">
+                          <span class="material-symbols-outlined">distance</span>
+                        </div>
+                        <div class="col">
+                          <span class="d-block">Unit #{{a.ApartmentNum}}, {{a.Floor}}</span>
+                          <span class="d-block">Building: {{a.Building.Name}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+              </p-overlayPanel>
+              </div>
+              <div class="col">
+                <p-card pRipple class="pb-1 text-center" (click)="tp.toggle($event)">
+                  <span class="d-block material-symbols-outlined">group</span>
+                  <span class="d-block">Tenant</span>
+                </p-card>
+                <p-overlayPanel #tp [dismissable]="true" [showCloseIcon]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
+                  <ng-template pTemplate>
+                    <div *ngIf="a.Tenant!=null" class="contact-card">
+                      <div class="row">
+                        <div class="col-2">
+                          <p-avatar [label]="a.Tenant.DisplayName[0]"></p-avatar>
+                        </div>
+                        <div class="col">
+                          <span class="d-block fw-semibold">{{a.Tenant.DisplayName}}</span>
+                          <span class="d-block text-secondary">{{a.Tenant.Email}}</span>
+                        </div>
+                      </div>
+                      <p></p>
+                      <div class="row">
+                        <div class="col-2">
+                          <span class="material-symbols-outlined">distance</span>
+                        </div>
+                        <div class="col">
+                          <span class="d-block">Unit #{{a.ApartmentNum}}, {{a.Floor}}</span>
+                          <span class="d-block">Building: {{a.Building.Name}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p *ngIf="a.Tenant==null">No Tenant</p>
+                  </ng-template>
+              </p-overlayPanel>
+              </div>
+
               <p-card pRipple class="col pb-1 text-center">
                 <span class="d-block material-symbols-outlined">workspace_premium</span>
                 <span class="d-block">Agreement</span>

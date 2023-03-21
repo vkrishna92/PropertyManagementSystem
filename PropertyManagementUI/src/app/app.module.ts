@@ -31,6 +31,11 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { TableModule } from "primeng/table";
 import { ChipModule } from 'primeng/chip';
 import {CarouselModule} from 'primeng/carousel';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {DividerModule} from 'primeng/divider';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+
 
 //ANGULAR MATERIAL
 import {MatCardModule} from '@angular/material/card';
@@ -49,6 +54,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRippleModule} from '@angular/material/core';
+
 
 //OTHER IMPORTS
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -119,6 +125,10 @@ import { MaintenanceAgreementComponent } from './maintenance-agreement/maintenan
     InputSwitchModule,
     ChipModule,
     CarouselModule,
+    OverlayPanelModule,
+    AvatarModule,
+    AvatarGroupModule,
+    DividerModule,
 
 
     //MATERIAL
