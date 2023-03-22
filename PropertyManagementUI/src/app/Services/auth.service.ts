@@ -23,8 +23,8 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router:Router) { }
 
-  login(userlogin:Login){    
-    return this.http.post<Tokens>(this.baseUrl+"login",userlogin); 
+  login(userlogin:Login){
+    return this.http.post<Tokens>(this.baseUrl+"login",userlogin);
   }
   register(register:Register){
     return this.http.post<any>(this.baseUrl+"register",register);
@@ -32,17 +32,17 @@ export class AuthService {
   logout(){
     localStorage.removeItem('access_token');
     this.loggedIn.next(false);
-    this.router.navigate(['/login']);    
-  }  
+    this.router.navigate(['/login']);
+  }
   IsLoginValid(){
     const token = localStorage.getItem('access_token');
     console
-    if(token != null){       
+    if(token != null){
       return !this.jwtHelper.isTokenExpired(token);
     }
     else{
       return false;
-    }    
+    }
   }
   getAttributeValue(key:string){
     const token = localStorage.getItem('access_token');
@@ -52,6 +52,9 @@ export class AuthService {
 
   getUserByEmail(email:string){
     return this.http.get<AppUserDto>(this.baseUrl+"getUserByEmail/"+email);
+  }
+  getUsersByName(name:string){
+    return this.http.get<AppUserDto[]>(this.baseUrl+"getUsersByName/"+name);
   }
 
 }

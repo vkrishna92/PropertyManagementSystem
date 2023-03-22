@@ -20,6 +20,12 @@ body{
 .p-tabview .p-tabview-panels {
   padding-top: 10px !important;
 }
+.material-symbols-outlined{
+  cursor: pointer;
+}
+.p-card-title,.p-dialog-title {
+  font-weight:normal !important;
+}
 
 
 html, body

@@ -30,7 +30,8 @@
                   <span class="d-block material-symbols-outlined">person</span>
                   <span class="d-block">Owner</span>
                 </p-card>
-                <p-overlayPanel #op  [dismissable]="true" [showCloseIcon]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
+
+                <p-overlayPanel #op  [dismissable]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
                   <ng-template pTemplate>
                     <div class="contact-card">
                       <div class="row">
@@ -57,20 +58,29 @@
               </p-overlayPanel>
               </div>
               <div class="col">
-                <p-card pRipple class="pb-1 text-center" (click)="tp.toggle($event)">
+                <p-card pRipple *ngIf="a.Tenant!=null" class="pb-1 text-center" (click)="tp.toggle($event)">
                   <span class="d-block material-symbols-outlined">group</span>
                   <span class="d-block">Tenant</span>
                 </p-card>
-                <p-overlayPanel #tp [dismissable]="true" [showCloseIcon]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
+                <p-card pRipple *ngIf="a.Tenant==null" class="pb-1 text-center" (click)="viewModal(a)">
+                  <span class="d-block material-symbols-outlined">group_add</span>
+                  <span class="d-block">Add tenant</span>
+                </p-card>
+                <p-overlayPanel #tp [dismissable]="true" [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'100ms'">
                   <ng-template pTemplate>
-                    <div *ngIf="a.Tenant!=null" class="contact-card">
+                    <div class="contact-card">
                       <div class="row">
                         <div class="col-2">
                           <p-avatar [label]="a.Tenant.DisplayName[0]"></p-avatar>
                         </div>
-                        <div class="col">
+                        <div class="col-8">
                           <span class="d-block fw-semibold">{{a.Tenant.DisplayName}}</span>
                           <span class="d-block text-secondary">{{a.Tenant.Email}}</span>
+                        </div>
+                        <div class="col-2">
+                          <button mat-icon-button>
+                            <span class="material-symbols-outlined">delete</span>
+                          </button>
                         </div>
                       </div>
                       <p></p>
@@ -84,7 +94,6 @@
                         </div>
                       </div>
                     </div>
-                    <p *ngIf="a.Tenant==null">No Tenant</p>
                   </ng-template>
               </p-overlayPanel>
               </div>
@@ -149,3 +158,30 @@
       </div>
     </div>
   </div>
+
+  <p-dialog header="Find User" [(visible)]="displayModal"  [modal]="true" [style]="{width: '50vw', height:'30vw'}">
+    <span class="p-input-icon-left w-100">
+      <i class="pi pi-search"></i>
+      <input type="text" class="w-100" #usersearch (keyup)="findUsers(usersearch.value)"  pInputText placeholder="Search" />
+    </span>
+
+    <p-listbox [options]="users" [(ngModel)]="selectedUser" class="w-100" optionLabel="name">
+      <ng-template class="w-100" let-user pTemplate="item">
+
+        <div class="row">
+          <div class="col-3">
+            <p-avatar label="P" size="large"></p-avatar>
+          </div>
+          <div class="col-9">
+            <span class="d-block" >{{user.DisplayName}}</span>
+            <span class="d-block text-secondary">{{user.Email}}</span>
+          </div>
+        </div>
+    </ng-template>
+    </p-listbox>
+    <ng-template pTemplate="footer">
+      <div>
+        <button pButton pRipple type="button" label="ADD" class="p-button-outlined" (click)="addTenant()"></button>
+      </div>
+    </ng-template>
+  </p-dialog>

@@ -35,6 +35,8 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {DividerModule} from 'primeng/divider';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
+import {ListboxModule} from 'primeng/listbox';
+import {SkeletonModule} from 'primeng/skeleton';
 
 
 //ANGULAR MATERIAL
@@ -80,6 +82,7 @@ import {CalendarModule} from 'primeng/calendar';
 import { CommunityServiceComponent } from './community-service/community-service.component';
 import { UnitPaymentPeriodComponent } from './unit-payment-period/unit-payment-period.component';
 import { MaintenanceAgreementComponent } from './maintenance-agreement/maintenance-agreement.component';
+import { AddEditTenantComponent } from './add-edit-tenant/add-edit-tenant.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +98,7 @@ import { MaintenanceAgreementComponent } from './maintenance-agreement/maintenan
     CommunityServiceComponent,
     UnitPaymentPeriodComponent,
     MaintenanceAgreementComponent,
+    AddEditTenantComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,7 +133,8 @@ import { MaintenanceAgreementComponent } from './maintenance-agreement/maintenan
     AvatarModule,
     AvatarGroupModule,
     DividerModule,
-
+    ListboxModule,
+    SkeletonModule,
 
     //MATERIAL
     MatCardModule,

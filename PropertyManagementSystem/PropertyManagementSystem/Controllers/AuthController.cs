@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PropertyManagementSystem.DTOs;
 using PropertyManagementSystem.Interfaces;
 using PropertyManagementSystem.Models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PropertyManagementSystem.Controllers
@@ -103,6 +105,13 @@ namespace PropertyManagementSystem.Controllers
             appUserDto.LastName = user.LastName;
             appUserDto.PhoneNumber = user.PhoneNumber;
             return Ok(appUserDto);
+        }
+
+        [HttpGet("getUsersByName/{name}")]
+        public async Task<IActionResult> GetUsersByName(string name)
+        {
+            var users = await _userManager.Users.Where(a => a.DisplayName.Contains(name)).ToListAsync();            
+            return Ok(users);
         }
 
     }

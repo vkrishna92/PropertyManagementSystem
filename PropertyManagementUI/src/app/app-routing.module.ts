@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditTenantComponent } from './add-edit-tenant/add-edit-tenant.component';
 import { CommunityServiceComponent } from './community-service/community-service.component';
 import { FinanceDashboardComponent } from './finance-dashboard/finance-dashboard.component';
 import { AuthGuard } from './gaurds/auth.guard';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'finance-dashboard',component:FinanceDashboardComponent},
   {path:'community-service',component:CommunityServiceComponent},
   {path:'payment-periods/:id',component:UnitPaymentPeriodComponent},
+  {path:'add-edit-tenant/:id',component:AddEditTenantComponent},
   {path:'sysadmin',component:SysAdminShellComponent,
     children:[
       {path:'',component:SysAdminHomeComponent},
